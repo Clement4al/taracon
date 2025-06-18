@@ -1,0 +1,52 @@
+<?php
+
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+//use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\SubCategoryController;
+use App\Models\Product;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [HomeController::class, 'home']);
+
+Route::get('/shop', function () {
+    return view('shop.index');
+});
+
+Route::get('/contact-us', function () {
+    return view('contact-us');
+});
+
+Route::resource('shop', ShopController::class)->only('index', 'show');
+
+//Route::middleware(['auth', 'can:access'])->group(function () {
+//    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+//    Route::get('/stock-export', StockExportController::class)->name('stock-export');
+//    Route::get('/sales-export', SalesExportController::class)->name('sales-export');
+//
+//    Route::get('/email/verify/{id}/{hash}', VerifyEmailController::class)->name('verification.verify');
+//
+//    Route::resource('users',               UserController::class)->only('index', 'show');
+//    Route::resource('roles',               RoleController::class)->only('index', 'show');
+//    Route::resource('stock',               StockController::class)->only('create');
+//    Route::resource('orders',              OrderController::class)->only('index', 'show');
+//    Route::resource('brands',              BrandController::class)->only('index');
+//    Route::resource('colors',              ColorController::class)->only('index');
+//    Route::resource('flyers',              FlyerController::class)->only('index', 'create');
+//    Route::resource('reports',             ReportController::class)->only('index');
+Route::resource('products',            ProductController::class)->only('index', 'create', 'edit');
+//    Route::resource('transfers',           TransferController::class)->only('index', 'show');
+//    Route::resource('locations',           LocationController::class)->only('index', 'show');
+//    Route::resource('categories',          CategoryController::class)->only('index', 'create', 'edit');
+//    Route::resource('users.orders',        UserOrderController::class)->only('index');
+//    Route::resource('bulk-products',       BulkProductController::class)->only('index');
+//    Route::resource('sub-categories',      SubCategoryController::class)->only('index');
+//    Route::resource('locations.transfers', TransferController::class)->only('create');
+//    Route::singleton('transfers.waybill',  TransferWaybillController::class)->only('show');
+//    Route::singleton('orders.invoice',     OrderInvoiceController::class)->only('show');
+//    Route::singleton('orders.waybill',     OrderWaybillController::class)->only('show');
+//    Route::singleton('settings',           SettingController::class)->only('edit');
+//});

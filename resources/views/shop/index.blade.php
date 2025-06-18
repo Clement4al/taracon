@@ -98,7 +98,7 @@
                             <div class="row g-4 justify-content-center">
                                 @foreach($products as $product)
                                     <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
+                                        <div class="rounded position-relative fruit-item">
                                             <div class="fruite-img">
                                                 <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
                                             </div>

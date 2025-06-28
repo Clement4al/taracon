@@ -15,6 +15,10 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [];
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function subCategories(): HasMany
     {

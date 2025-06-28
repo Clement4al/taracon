@@ -11,6 +11,11 @@ class SubCategory extends Model
     /** @use HasFactory<\Database\Factories\SubCategoryFactory> */
     use HasFactory;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

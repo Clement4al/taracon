@@ -26,13 +26,13 @@ class ShopController extends Controller
 
         return view('shop.index', compact('products', 'categories', 'currentSubCategorySlug'));
     }
+
     public function show(Product $product): View
     {
-//        $product->load(['subCategory.products' => fn ($query) => $query->has('image')->take(10)]);
+        $product->load(['subCategory.products' => fn ($query) => $query->take(10)]);
 
-        $products = Product::all();
 //        $recommendedProducts = Product::whereHas('image')->inRandomOrder()->take(10)->get();
 
-        return view('shop.show', compact('products', ));
+        return view('shop.show', compact('product' ));
     }
 }

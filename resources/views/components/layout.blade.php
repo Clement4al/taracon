@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>Taracon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="Clement Michael">
+    <meta name="description" content="08163882870">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,17 +57,20 @@
     </div>
     <div class="container px-0">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="/" class="navbar-brand"><h1 class="text-primary display-6">Taracon</h1></a>
+            <a href="/" class="navbar-brand">
+                <h1 class="display-6 mb-0 logo-gradient">Taracon</h1>
+            </a>
+{{--            <div class="logo">Taracon</div>--}}
+{{--            <a href="/" class="navbar-brand"><h1 class="text-primary display-6">Taracon</h1></a>--}}
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="/shop" class="nav-item nav-link">Shop</a>
-                    <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
+                    <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+                    <x-nav-link href="/shop" :active="request()->is('shop')">Shop</x-nav-link>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                         <div class="dropdown-menu m-0 bg-secondary rounded-0">
                             <a href="cart.html" class="dropdown-item">Cart</a>
                             <a href="chackout.html" class="dropdown-item">Checkout</a>
@@ -75,8 +78,9 @@
                             <a href="404.html" class="dropdown-item">404 Page</a>
                         </div>
                     </div>
-                    <a href="/about-us" class="nav-item nav-link">About Us</a>
-                    <a href="/contact-us" class="nav-item nav-link">Contact Us</a>
+                    <x-nav-link href="/about-us" :active="request()->is('about-us')">About Us</x-nav-link>
+                    <x-nav-link href="/contact-us" :active="request()->is('contact-us')">Contact Us</x-nav-link>
+
                 </div>
                 <div class="d-flex m-3 me-0">
                     <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
@@ -154,12 +158,13 @@
             <div class="col-lg-3 col-md-6">
                 <div class="d-flex flex-column text-start footer-item">
                     <h4 class="text-light mb-3">Shop Info</h4>
-                    <a class="btn-link" href="">About Us</a>
-                    <a class="btn-link" href="">Contact Us</a>
+                    <a class="btn-link" href="/about-us">About Us</a>
+                    <a class="btn-link" href="/contact-us">Contact Us</a>
                     <a class="btn-link" href="">Privacy Policy</a>
                     <a class="btn-link" href="">Terms & Condition</a>
                     <a class="btn-link" href="">Return Policy</a>
                     <a class="btn-link" href="">FAQs & Help</a>
+
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -176,8 +181,8 @@
             <div class="col-lg-3 col-md-6">
                 <div class="footer-item">
                     <h4 class="text-light mb-3">Contact</h4>
-                    <p>Address: 1429 Netus Rd, NY 48247</p>
-                    <p>Email: Example@gmail.com</p>
+                    <p>Address: Taraba State</p>
+                    <p>Email: support@taracon.com</p>
                     <p>Phone: +0123 4567 8910</p>
                     <p>Payment Accepted</p>
                     <img src="img/payment.png" class="img-fluid" alt="">

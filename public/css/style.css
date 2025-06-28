@@ -3,12 +3,12 @@
 #spinner {
     opacity: 0;
     visibility: hidden;
-    transition: opacity .8s ease-out, visibility 0s linear .5s;
+    transition: opacity .5ms ease-out, visibility 0s linear .20s;
     z-index: 99999;
  }
 
  #spinner.show {
-     transition: opacity .8s ease-out, visibility 0s linear .0s;
+     transition: opacity .20s ease-out, visibility 0s linear .20s;
      visibility: visible;
      opacity: 1;
  }
@@ -117,10 +117,30 @@
 /*** Topbar End ***/
 
 /*** Navbar Start ***/
+
+.logo-gradient {
+    background: linear-gradient(135deg, var(--bs-primary), color-mix(in srgb, var(--bs-primary) 70%, transparent)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: inline-block;
+    cursor: pointer;
+}
+.logo-gradient:hover {
+    transform: scale(1.05) translateY(-2px) !important;
+    background: linear-gradient(135deg, var(--bs-primary)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
 .navbar .navbar-nav .nav-link {
     padding: 10px 15px;
     font-size: 16px;
-    transition: .5s;
+    transition: .9s;
 }
 
 .navbar {

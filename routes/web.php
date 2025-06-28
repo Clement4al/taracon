@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 //use App\Http\Controllers\ReportController;
@@ -10,17 +12,24 @@ use App\Http\Controllers\SubCategoryController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'home']);
+// Define global parameter mapping first
+Route::resourceParameters([
+    'shop' => 'product',
+]);
 
-Route::get('/shop', function () {
-    return view('shop.index');
+Route::get('/welcome', function () {
+    return view('welcome');
 });
 
+Route::get('/', [HomeController::class, 'home']);
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
 
 Route::resource('shop', ShopController::class)->only('index', 'show');
+
+Route::resource('cart', CartController::class)->only('index', 'show');
+Route::resource('check-out', CheckoutController::class)->only('index');
 
 //Route::middleware(['auth', 'can:access'])->group(function () {
 //    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
@@ -37,7 +46,7 @@ Route::resource('shop', ShopController::class)->only('index', 'show');
 //    Route::resource('colors',              ColorController::class)->only('index');
 //    Route::resource('flyers',              FlyerController::class)->only('index', 'create');
 //    Route::resource('reports',             ReportController::class)->only('index');
-Route::resource('products',            ProductController::class)->only('index', 'create', 'edit');
+//Route::resource('products',            ProductController::class)->only('index', 'create', 'edit');
 //    Route::resource('transfers',           TransferController::class)->only('index', 'show');
 //    Route::resource('locations',           LocationController::class)->only('index', 'show');
 //    Route::resource('categories',          CategoryController::class)->only('index', 'create', 'edit');

@@ -7,5 +7,6 @@
 </head>
 <body>
     <livewire:app-cart> </livewire:app-cart>
+
 </body>
 </html>

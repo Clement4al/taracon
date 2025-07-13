@@ -9,9 +9,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SubCategoryController;
+use App\Livewire\AppCart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
+
+//Route::get('/counter', [AppCart::class]);
 // Define global parameter mapping first
 Route::resourceParameters([
     'shop' => 'product',

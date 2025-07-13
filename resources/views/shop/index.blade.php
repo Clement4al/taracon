@@ -90,7 +90,6 @@
                             </div>
                         </div>
 
-
                         <div class="col-lg-9">
                             <div class="row g-4 justify-content-center">
                                 @foreach($products as $product)

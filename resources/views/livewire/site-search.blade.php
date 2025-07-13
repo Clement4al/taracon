@@ -1,11 +1,13 @@
 <div class="position-relative">
-    <div class="input-group">
-        <input class="form-control p-3" name="q" placeholder="Search products…" aria-label="search"
-               value="{{ request('q') }}" wire:model.live="search">
-        <button class="btn btn-outline-secondary p-3" type="button" id="search-icon-1">
-            <i class="fa fa-search"></i>
-        </button>
-    </div>
+    <form id="{{ $id ?? 'search-form' }}" action="{{ route('shop.index') }}" method="GET">
+        <div class="input-group">
+            <input class="form-control p-3" name="q" placeholder="Search products…" aria-label="search"
+                   value="{{ request('q') }}" wire:model.live="search">
+            <button class="btn btn-outline-secondary p-3" type="submit" id="search-icon-1">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </form>
 
     @if(!empty($search) && $products->count() > 0)
         <div class="search-suggestions position-absolute w-100 bg-white border border-top-0 shadow-sm" style="z-index: 1000; max-height: 300px; overflow-y: auto;">
@@ -19,7 +21,7 @@
                             <div class="info-product flex-grow-1">
                                 <div class="item_title text-dark fw-medium">{{ $product->name }}</div>
                                 <div class="price">
-                                    <span class="sale text- fw-bold">
+                                    <span class="sale text-success fw-bold">
                                         ₦{{ number_format($product->price) }}
                                     </span>
                                 </div>
@@ -31,5 +33,3 @@
         </div>
     @endif
 </div>
-
-

@@ -21,7 +21,7 @@
                             <div class="info-product flex-grow-1">
                                 <div class="item_title text-dark fw-medium">{{ $product->name }}</div>
                                 <div class="price">
-                                    <span class="sale text-success fw-bold">
+                                    <span class="sale text-sucess fw-bold">
                                         ₦{{ number_format($product->price) }}
                                     </span>
                                 </div>

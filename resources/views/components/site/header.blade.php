@@ -4,7 +4,6 @@
 </div>
 <!-- Spinner End -->
 
-
 <!-- Navbar start -->
 <div class="container-fluid fixed-top">
     <div class="container topbar bg-primary d-none d-lg-block">
@@ -45,7 +44,6 @@
                     </div>
                     <x-nav-link href="/about-us" :active="request()->is('about-us')">About Us</x-nav-link>
                     <x-nav-link href="/contact-us" :active="request()->is('contact-us')">Contact Us</x-nav-link>
-
                 </div>
                 <div class="d-flex m-3 me-0">
                     <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>

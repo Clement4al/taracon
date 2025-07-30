@@ -5,8 +5,9 @@ namespace App\Providers;
 use App\Support\Cart;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Http\Response;
+use Illuminate\Routing\ResponseFactory;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('cart', function () {
             return new Cart();
         });
+        Route::resourceParameters([
+            'shop' => 'product',
+        ]);
+
     }
 
     public function boot(): void
@@ -27,14 +32,22 @@ class AppServiceProvider extends ServiceProvider
 
         $this->registerMigrationMacros();
         $this->registerApiResponseMacros();
-
+//
+//        $this->routes(function () {
+//            Route::middleware('api')
+//                ->prefix('api')->name('api.')
+//                ->group(base_path('routes/api.php'));
+//
+//            Route::middleware('web')
+//                ->group(base_path('routes/web.php'));
+//        });
         Paginator::useBootstrapFive();
 
     }
 
     public function registerApiResponseMacros(): void
     {
-        Response::macro('api', function (string $message, $data = [], $status = 200, array $headers = []) {
+        ResponseFactory::macro('api', function (string $message, $data = [], $status = 200, array $headers = []) {
            return response()->json(['message' => $message, 'data' => $data], $status, $headers);
         });
     }

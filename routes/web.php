@@ -16,17 +16,26 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/counter', [AppCart::class]);
 // Define global parameter mapping first
-Route::resourceParameters([
-    'shop' => 'product',
-]);
+
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->name('home');
+
 Route::get('/contact-us', function () {
     return view('contact-us');
+})->name('contact-us');
+
+Route::get('/about-us', function () {
+    return view('about-us');
+})->name('about-us');
+
+Route::middleware('guest')->group(function () {
+    Route::view('/login', 'auth.login')->name('login');
+    Route::view('/register', 'auth.register')->name('register');
+    Route::view('/reset-password/{token}', 'auth.reset')->name('password.reset');
 });
 
 Route::resource('shop', ShopController::class)->only('index', 'show');

@@ -12,8 +12,7 @@ trait InteractsWithCart
      */
     public function addToCart(): void
     {
-
-        Cart::add($this);
+          Cart::add($this);
     }
 
     /**

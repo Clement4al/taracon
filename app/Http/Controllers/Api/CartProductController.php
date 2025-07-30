@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Concerns\InteractsWithCart;
 use App\Models\Product;
+use App\Support\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class CartProductController extends Controller
 {
-    use InteractsWithCart;
-
     public function store(Product $product)
     {
         $product->addToCart();
 
         return Response::api("{$product->name} has been added to your cart.");
+
     }
 
     public function update(Request $request, Product $product)
@@ -24,7 +24,6 @@ class CartProductController extends Controller
         $request->validate(['quantity' => 'integer|min:1']);
 
         $product->syncInCart();
-
 
         return Response::api('We have updated your cart.');
     }

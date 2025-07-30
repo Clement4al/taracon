@@ -1,0 +1,8 @@
+// ✅ Your custom overrides
+$primary: #0a4e19;
+$secondary: #ffc107;
+$body-bg: #f8f9fa;
+$font-family-base: 'Inter', sans-serif;
+
+// ✅ Then import Bootstrap
+@import "bootstrap/scss/bootstrap";

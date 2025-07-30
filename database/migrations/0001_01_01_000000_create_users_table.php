@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,13 +14,30 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('first_name', 45);
+            $table->string('last_name', 45)->nullable();
+            $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->string('phone', 45)->nullable()->unique();
+//            $table->enum('gender', ['M', 'F'])->default('M')->index();
+            $table->string('photo')->nullable();
+            $table->text('address')->nullable();
+            $table->enum('type', ['admin', 'customer'])->default('customer');
+//            $table->foreignId('role_id')->nullable()->constrained();
+            $table->boolean('notifiable')->default(true);
+            $table->integer('login_count')->default(0);
+            $table->timestamp('last_login')->nullable();
+            $table->dateTime('banned_until')->nullable();
+            $table->json('meta')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->authors();
+            $table->softDeletes();
+
+            $table->fullText(['last_name', 'first_name', 'phone', 'email']);
         });
+
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

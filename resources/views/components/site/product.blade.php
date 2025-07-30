@@ -29,22 +29,9 @@
                         @endif
                     </div>
                     <div class="shop_item_cart_btn d-grid">
-                        <form
-                            action="{{ route('api.products.cart.store', $product) }}"
-                            method="POST"
-                            x-data
-                            @submit.prevent="$submit()"
-                            @then="$dispatch('cart-updated')"
-                        >
-                            @csrf
-                            <button
-                                type="submit"
-                                class="btn border border-secondary rounded-pill px-3 text-primary ms-auto mt-2 mt-lg-0"
-                            >
-                                Add to Cart
-                            </button>
+                        <form action="{{ route('api.products.cart.store', $product) }}" method="post" x-data @submit.prevent="$submit()" @then="$dispatch('cart-updated')">
+                            <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary ms-auto mt-2 mt-lg-0"> Add to Cart</button>
                         </form>
-
                     </div>
                     <!-- Right Section: Add to Cart Button -->
                 </div>

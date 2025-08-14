@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 //use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
@@ -43,8 +44,8 @@ Route::resource('shop', ShopController::class)->only('index', 'show');
 Route::resource('cart', CartController::class)->only('index', 'show');
 Route::resource('check-out', CheckoutController::class)->only('index');
 
-//Route::middleware(['auth', 'can:access'])->group(function () {
-//    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+Route::middleware(['auth', 'can:access'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
 //    Route::get('/stock-export', StockExportController::class)->name('stock-export');
 //    Route::get('/sales-export', SalesExportController::class)->name('sales-export');
 //
@@ -70,4 +71,4 @@ Route::resource('check-out', CheckoutController::class)->only('index');
 //    Route::singleton('orders.invoice',     OrderInvoiceController::class)->only('show');
 //    Route::singleton('orders.waybill',     OrderWaybillController::class)->only('show');
 //    Route::singleton('settings',           SettingController::class)->only('edit');
-//});
+});

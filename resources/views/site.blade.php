@@ -57,7 +57,7 @@
         }
 
         .hero1 {
-            background: url("{{ cloudinary_url('bensu/slider/1', ['width' => 800]) }}") no-repeat bottom right;
+            background: url("{{ cloudinary_url('taracon/slider/1', ['width' => 800]) }}") no-repeat bottom right;
             background-size: 63% auto;
             height: 100%;
             display: inline-block;
@@ -65,7 +65,7 @@
         }
 
         .hero3 {
-            background: #D1ECFD url("{{ cloudinary_url('bensu/slider/2', ['width' => 800]) }}") no-repeat 88%;
+            background: #D1ECFD url("{{ cloudinary_url('taracon/slider/2', ['width' => 800]) }}") no-repeat 88%;
             background-size: 50% !important;
             position: relative;
             height: 600px;

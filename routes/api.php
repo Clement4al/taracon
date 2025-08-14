@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::name('api.')->group(function () {
 Route::post('/login',    [AuthController::class, 'store'])->name('login');
 Route::delete('/logout', [AuthController::class, 'destroy'])->name('logout');
 //Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
-Route::post('/register', [RegisteredUserController::class, 'store'])->name('api.register');
+Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
-Route::name('api.')->group(function () {
-    Route::apiResource('products.cart', CartProductController::class)->except(['index', 'show']);
+Route::apiResource('products.cart', CartProductController::class)->except(['index', 'show']);
 });
+

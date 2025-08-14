@@ -7,6 +7,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script defer src="https://unpkg.com/alpinejs@3.12.0/dist/cdn.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -55,16 +58,15 @@
             overflow: hidden;
         }
 
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
+        /*@keyframes float {*/
+        /*    0%, 100% { transform: translateY(0px) rotate(0deg); }*/
+        /*    50% { transform: translateY(-20px) rotate(5deg); }*/
+        /*}*/
 
         .brand-content {
             text-align: center;
             z-index: 10;
-            position: relative;
+            /*position: relative;*/
         }
 
         .brand-logo {
@@ -165,17 +167,8 @@
             position: relative;
         }
 
-        .input-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #a0aec0;
-            z-index: 2;
-        }
-
         .form-control.with-icon {
-            padding-left: 50px;
+            padding-left: 20px;
         }
 
         .password-toggle {
@@ -351,29 +344,6 @@
     <div class="login-card">
         <!-- Left Side - Product Showcase -->
         <div class="image-section">
-{{--            <div class="floating-products">--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-apple-alt fa-2x mb-2"></i>--}}
-{{--                    <div>Fresh Fruits</div>--}}
-{{--                    <small>Premium Quality</small>--}}
-{{--                </div>--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-seedling fa-2x mb-2"></i>--}}
-{{--                    <div>Organic Vegetables</div>--}}
-{{--                    <small>Farm Fresh</small>--}}
-{{--                </div>--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-wine-bottle fa-2x mb-2"></i>--}}
-{{--                    <div>Beverages</div>--}}
-{{--                    <small>Craft Selection</small>--}}
-{{--                </div>--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-bread-slice fa-2x mb-2"></i>--}}
-{{--                    <div>Bakery Items</div>--}}
-{{--                    <small>Daily Fresh</small>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
             <div class="brand-content">
                 <h1 class="brand-logo">Taracon</h1>
                 <p class="brand-tagline">Your Premium Shopping Destination</p>
@@ -395,20 +365,28 @@
                 <p class="form-subtitle">Sign in to your account to continue shopping</p>
             </div>
 
-            <form id="loginForm">
+            <form
+                action="{{ route('api.login') }}"
+                x-data @submit.prevent="$submit()"
+                @then="location.reload()"
+                class="form w-100"
+                x-transition:enter
+{{--                x-show="! forgot"--}}
+                method="post"
+            >
                 <div class="form-group">
                     <label class="form-label" for="email">Email Address</label>
                     <div class="input-group">
-                        <i class="input-icon fas fa-envelope"></i>
-                        <input type="email" id="email" class="form-control with-icon" placeholder="Email" required>
+{{--                        <i class="input-icon fas fa-envelope"></i>--}}
+                        <input id="email" type="email" name="email"  class="form-control with-icon"  placeholder="Email" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
                     <div class="input-group">
-                        <i class="input-icon fas fa-lock"></i>
-                        <input type="password" id="password" class="form-control with-icon" placeholder="Password" required>
+{{--                        <i class="input-icon fas fa-lock"></i>--}}
+                        <input id="password" name="password" type="password" class="form-control with-icon" placeholder="Password" required>
                         <button type="button" class="password-toggle" onclick="togglePassword()">
                             <i class="fas fa-eye" id="toggleIcon"></i>
                         </button>
@@ -425,7 +403,7 @@
 
                 <button type="submit" class="login-btn">
                     <i class="fas fa-sign-in-alt me-2"></i>
-                    Sign In to Your Account
+                    Log In
                 </button>
 
                 <div class="divider">
@@ -446,12 +424,13 @@
                 <div class="register-link">
                     Don't have an account? <a href="{{ route('register') }}">Sign Up for free</a>
                 </div>
+
             </form>
         </div>
     </div>
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 <script>
     function togglePassword() {
         const passwordInput = document.getElementById('password');
@@ -468,31 +447,20 @@
         }
     }
 
-    // // Form submission
-    // document.getElementById('loginForm').addEventListener('submit', function(e) {
-    //     e.preventDefault();
-    //
-    //     // Add loading state
-    //     const submitBtn = document.querySelector('.login-btn');
-    //     const originalText = submitBtn.innerHTML;
-    //     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing In...';
-    //     submitBtn.disabled = true;
-    //
-    //     // Simulate API call
-    //     setTimeout(() => {
-    //         submitBtn.innerHTML = originalText;
-    //         submitBtn.disabled = false;
-    //         alert('Login functionality would be implemented here!');
-    //     }, 2000);
-    // });
-    //
-    // // Add floating animation to product items
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     const productItems = document.querySelectorAll('.product-item');
-    //     productItems.forEach((item, index) => {
-    //         item.style.animationDelay = `${index * 0.5}s`;
-    //     });
-    // });
 </script>
+<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+{{--<script src="{{ asset('admin/plugins/global/plugins.bundle.js') }}"></script>--}}
+{{--<script src="{{ asset('admin/js/scripts.bundle.js') }}"></script>--}}
+<!--end::Global Javascript Bundle-->
+
+<!--begin::Custom Javascript(used for this page only)-->
+<script src="{{ asset('admin/js/custom/authentication/sign-in/general.js') }}"></script>
+<script src="{{ asset('admin/js/custom/authentication/sign-up/general.js') }}"></script>
+
+{{--@stack('scripts')--}}
+
+<script src="https://unpkg.com/axios@1.4.0/dist/axios.min.js"></script>
+<script src="{{ asset("js/request.js") }}?v=2.2"></script>
+
 </body>
 </html>

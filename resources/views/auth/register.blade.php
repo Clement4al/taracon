@@ -379,28 +379,6 @@
     <div class="login-card">
         <!-- Left Side - Product Showcase -->
         <div class="image-section">
-{{--            <div class="floating-products">--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-apple-alt fa-2x mb-2"></i>--}}
-{{--                    <div>Fresh Fruits</div>--}}
-{{--                    <small>Premium Quality</small>--}}
-{{--                </div>--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-seedling fa-2x mb-2"></i>--}}
-{{--                    <div>Organic Vegetables</div>--}}
-{{--                    <small>Farm Fresh</small>--}}
-{{--                </div>--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-wine-bottle fa-2x mb-2"></i>--}}
-{{--                    <div>Beverages</div>--}}
-{{--                    <small>Craft Selection</small>--}}
-{{--                </div>--}}
-{{--                <div class="product-item">--}}
-{{--                    <i class="fas fa-bread-slice fa-2x mb-2"></i>--}}
-{{--                    <div>Bakery Items</div>--}}
-{{--                    <small>Daily Fresh</small>--}}
-{{--                </div>--}}
-{{--            </div>--}}
 
             <div class="brand-content">
                 <h1 class="brand-logo">Taracon</h1>
@@ -544,41 +522,6 @@
             toggleIcon.classList.add('fa-eye');
         }
     }
-
-    // // Form submission
-    // document.getElementById('registerForm').addEventListener('submit', function(e) {
-    //     e.preventDefault();
-    //
-    //     // Basic password confirmation check
-    //     const password = document.getElementById('password').value;
-    //     const confirmPassword = document.getElementById('confirmPassword').value;
-    //
-    //     if (password !== confirmPassword) {
-    //         alert('Passwords do not match!');
-    //         return;
-    //     }
-
-        // // Add loading state
-        // const submitBtn = document.querySelector('.register-btn');
-        // const originalText = submitBtn.innerHTML;
-        // submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating Account...';
-        // submitBtn.disabled = true;
-
-        // Simulate API call
-        // setTimeout(() => {
-        //     submitBtn.innerHTML = originalText;
-        //     submitBtn.disabled = false;
-        //     // alert('Registration functionality would be implemented here!');
-        // }, 2000);
-    // });
-    //
-    // // Add floating animation to product items
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     const productItems = document.querySelectorAll('.product-item');
-    //     productItems.forEach((item, index) => {
-    //         item.style.animationDelay = `${index * 0.5}s`;
-    //     });
-    // });
 
 </script>
 

@@ -1,6 +1,7 @@
 <?php
 
 //use App\Models\Setting;
+use App\Models\Setting;
 use App\Models\User;
 use App\Support\Cart;
 //use Cloudinary\Configuration\Configuration;

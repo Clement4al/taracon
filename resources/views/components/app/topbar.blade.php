@@ -57,9 +57,9 @@
                         </div>
                         <!--end::Search toggle-->
                         <div data-kt-search-element="content" class="menu menu-sub menu-sub-dropdown p-7 w-325px w-md-375px">
-{{--                            @admin--}}
-{{--                                <livewire:global-search />--}}
-{{--                            @endadmin--}}
+                            @admin
+                                <livewire:global-search />
+                            @endadmin
                         </div>
                     </div>
                     <!--end::Search-->
@@ -139,8 +139,8 @@
                     <div class="cursor-pointer symbol symbol-35px symbol-md-40px"
                          data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                          data-kt-menu-placement="bottom-end">
-{{--                        <img src="{{ user()->photo }}" alt="user photo"/>--}}
-                        <img src="" alt="user photo"/>
+                        <img src="{{ user()->photo }}" alt="user photo"/>
+{{--                        <img src="" alt="user photo"/>--}}
 
                     </div>
                     <!--begin::User account menu-->
@@ -152,18 +152,17 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-{{--                                    <img alt="user photo" src="{{ user()->photo }}"/>--}}
-                                     <img alt="user photo" src=""/>
+                                    <img alt="user photo" src="{{ user()->photo }}"/>
 
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
                                     <div class="fw-bold d-flex align-items-center fs-5">
-{{--                                        {{ user()->name }}--}}
-{{--                                        <x-users.badge :user="user()" />--}}
+                                        {{ user()->name }}
+                                        <x-users.badge :user="user()" />
                                     </div>
-{{--                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ user()->email }}</a>--}}
+                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ user()->email }}</a>
                                 </div>
                                 <!--end::Username-->
                             </div>
@@ -174,7 +173,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-{{--                            <a href="{{ route('users.show', user()) }}" class="menu-link px-5">My Profile</a>--}}
+                            <a href="{{ route('users.show', user()) }}" class="menu-link px-5">My Profile</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
@@ -185,7 +184,7 @@
                                 <span class="menu-text">My Cart</span>
                                 <span class="menu-badge">
                                     <span class="badge badge-light-warning badge-circle fw-bold fs-7">
-{{--                                        <livewire:cart-count />--}}
+                                        <livewire:cart-count />
                                     </span>
                                 </span>
                             </span>
@@ -213,7 +212,10 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <form action="{{ route('api.logout') }}" method="POST" x-data @submit.prevent="$submit()" @then="location.reload()">
+                            <form action="{{ route('api.logout') }}"
+                                  method="POST"
+                                  x-data @submit.prevent="$submit()"
+                                  @then="location.reload()">
                                 @method('delete')
                                 <button class="menu-link btn px-5 border-0 w-100">
                                     Sign Out &nbsp;<span><i class="fa fa-sign-out-alt"></i></span>

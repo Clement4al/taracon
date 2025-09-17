@@ -1,14 +1,13 @@
 <?php
 
-//use App\Models\Setting;
 use App\Models\Setting;
 use App\Models\User;
 use App\Support\Cart;
-//use Cloudinary\Configuration\Configuration;
+use Cloudinary\Configuration\Configuration;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-//use Cloudinary\Asset\Image;
+use Cloudinary\Asset\Image;
 use Illuminate\Support\Facades\Date;
 
 /**
@@ -39,8 +38,12 @@ function site($key = null)
  * @param  bool  $bg_auto
  * @return string
  */
-function cloudinary_url($value, $transformation = [], $bg_auto = false)
+function cloudinary_url($value, $transformation = [], $bg_auto = false): ?string
 {
+    if (empty($value)) {
+        return null; // or return a default placeholder URL
+    }
+
     if (! is_array($transformation)) {
         $transformation = ['width' => $transformation];
     }

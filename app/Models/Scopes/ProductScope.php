@@ -50,10 +50,10 @@ trait ProductScope
 
     public function scopeWithStock(Builder $builder): void
     {
-        $builder->withSum([
-            'locations as stock' => fn ($query) => $query->select(
-                DB::raw('SUM(stock.quantity)')
-            )
-        ], '');
+//        $builder->withSum([
+//            'locations as stock' => fn ($query) => $query->select(
+//                DB::raw('SUM(stock.quantity)')
+//            )
+//        ], '');
     }
 }

@@ -2,16 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Concerns\HasMediaAttribute;
+use App\Models\Concerns\HasAuthor;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Image extends Model
 {
-    /** @use HasFactory<\Database\Factories\ImageFactory> */
-    use HasFactory;
-    public function getRouteKeyName()
+    use HasMediaAttribute, HasAuthor;
+
+    public function src(): Attribute
     {
-        return 'slug';
+        return Attribute::make(
+            get: fn ($value) => cloudinary_url($value, 1000, true),
+            set: fn ($value) => $this->uploadAndReturnPath($value, config('cloudinary.folders.product'))
+        )->withoutObjectCaching();
     }
 
+    public function thumbnail(): Attribute
+    {
+        return Attribute::get(fn () => $this->transform(90, true));
+    }
+
+    public function medium(): Attribute
+    {
+        return Attribute::get(fn () => $this->transform(300, true));
+    }
+
+    public function transform($transformation, $bg_auto): string
+    {
+        return cloudinary_url($this->getAttributeFromArray('src'), $transformation, $bg_auto);
+    }
 }

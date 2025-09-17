@@ -12,7 +12,7 @@
                                 <div class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start h-250px" style="background-image:url({{ asset('admin/media/svg/shapes/top-green.png') }}" data-bs-theme="light">
                                     <h3 class="card-title align-items-start flex-column text-white pt-15">
                                         <span class="fw-bold fs-2x mb-3">
-{{--                                            {{ Date::greet() }}, {{ user('first_name') }}! 👋--}}
+                                            {{ Date::greet() }}, {{ user('first_name') }}! 👋
                                         </span>
 
                                         <span class="fs-4 text-white">
@@ -36,8 +36,9 @@
                                                         </span>
                                                     </div>
                                                     <div class="m-0">
-{{--                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($customers_count) }}</span>--}}
+                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($customers_count) }}</span>
                                                         <span class="text-gray-500 fw-semibold fs-6">Customers</span>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -55,7 +56,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="m-0">
-{{--                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($products_count) }}</span>--}}
+                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($products_count) }}</span>
                                                         <span class="text-gray-500 fw-semibold fs-6">Products</span>
                                                     </div>
                                                 </div>

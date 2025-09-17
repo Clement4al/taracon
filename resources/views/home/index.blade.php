@@ -507,7 +507,7 @@
 </div>
 <!-- Banner Section End -->
 
-<x-home.categories />
+{{--<x-home.categories />--}}
 
 <!-- Bestsaler Product Start -->
 <div class="container-fluid py-5">
@@ -533,7 +533,7 @@
                                 <i class="fas fa-star"></i>
                             </div>
                             <h4 class="mb-3">3.12 $</h4>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Add to cart</a>
                         </div>
                     </div>
                 </div>

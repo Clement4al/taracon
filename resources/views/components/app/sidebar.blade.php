@@ -62,8 +62,8 @@
                     <!--begin:POS Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-{{--                        <a class="menu-link" href="{{ route('pos') }}">--}}
-                            <span class="menu-icon">
+                        <a class="menu-link" href="{{ route('pos') }}">
+                        <span class="menu-icon">
                                 <!--begin::Svg Icon-->
                                 <span class="svg-icon svg-icon-2">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +83,8 @@
                     <!--begin:Order Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('orders.index') }}">
+{{--                        <a class="menu-link" href="{{ route('orders.index') }}">--}}
+                            <a class="menu-link" href="">
                                 <span  class="menu-icon">
                                     <i class="ki-duotone ki-chart-line-up fs-3"><i class="path1"></i><i class="path2"></i></i>
                                 </span>
@@ -119,7 +120,7 @@
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="z-menu menu-link" href="{{ route('brands.index') }}">
-                                    <span class="menu-bullet">
+                                <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">Brands</span>
@@ -127,10 +128,11 @@
                                 <!--end:Menu link-->
                             </div>
                             <!--end:Menu item-->
+
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="z-menu menu-link" href="{{ route('categories.index') }}">
+                               <a class="z-menu menu-link" href="{{ route('categories.index') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -139,10 +141,12 @@
                                 <!--end:Menu link-->
                             </div>
                             <!--end:Menu item-->
+
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="z-menu menu-link" href="{{ route('colors.index') }}">
+{{--                                <a class="z-menu menu-link" href="{{ route('colors.index') }}">--}}
+                                <a class="z-menu menu-link" href="">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -167,6 +171,8 @@
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="z-menu menu-link" href="{{ route('sub-categories.index') }}">
+{{--                                     <a class="z-menu menu-link" href="">--}}
+
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -184,7 +190,9 @@
                     <!--begin:Transfers Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('transfers.index') }}">
+{{--                        <a class="menu-link" href="{{ route('transfers.index') }}">--}}
+                            <a class=" menu-link" href="">
+
                                 <span class="menu-icon">
                                     <i class="ki-duotone ki-arrow-right-left fs-2">
                                         <i class="path1"></i>
@@ -202,7 +210,9 @@
                     <!--begin:Locations Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('locations.index') }}">
+{{--                        <a class="menu-link" href="{{ route('locations.index') }}">--}}
+                        <a class=" menu-link" href="">
+
                             <span class="menu-icon">
                                 <!--begin::Svg Icon-->
                                 <span class="svg-icon svg-icon-2">
@@ -223,7 +233,9 @@
                     <!--begin:Reports Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('reports.index') }}">
+{{--                        <a class="menu-link" href="{{ route('reports.index') }}">--}}
+                            <a class=" menu-link" href="">
+
                             <span class="menu-icon">
                                 <i class="ki-duotone ki-tablet-text-up fs-1">
                                     <i class="path1"></i>
@@ -239,8 +251,9 @@
                 @can('manage-shop')
                     <!--begin:Flyers Menu item-->
                     <div class="menu-item menu-accordion">
-                        <a href="{{ route('flyers.index') }}" class="menu-link">
-                            <span class="menu-icon">
+{{--                   <a href="{{ route('flyers.index') }}" class="menu-link">--}}
+                        <a href=" " class="menu-link">
+                        <span class="menu-icon">
                                 <i class="ki-duotone ki-file-sheet fs-2">
                                  <i class="path1"></i><i class="path2"></i>
                                 </i>
@@ -314,7 +327,7 @@
                         <div class="menu-item">
                             <!--begin:Menu link-->
                             <a class="menu-link" href="{{ route('settings.edit') }}">
-                                <span class="menu-icon">
+                            <span class="menu-icon">
                                     <!--begin::Svg Icon-->
                                     <span class="svg-icon svg-icon-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
@@ -332,7 +345,7 @@
                 @endadmin
                 <!--begin:Menu item-->
                 <div class="menu-item menu-accordion">
-{{--                    <a href="{{ route('users.show', user()) }}" class="menu-link">--}}
+                    <a href="{{ route('users.show', user()) }}" class="menu-link">
                     <span class="menu-icon">
                         <span class="svg-icon svg-icon-2">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

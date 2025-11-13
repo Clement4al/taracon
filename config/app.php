@@ -122,12 +122,14 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+//    'providers' => [
+//        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
+//    ],
 
+    'aliases' => Illuminate\Support\Facades\Facade::defaultAliases()->merge([
+        'Cart' => App\Support\CartFacade::class,
+        'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
 
-    'aliases' => Illuminate\Support\Facades\Facade::defaultAliases()->merge(
-        [
-            'Cart' => App\Support\CartFacade::class,
-        ],
-    )->toArray(),
+    ])->toArray(),
 
 ];

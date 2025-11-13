@@ -34,7 +34,7 @@
                         <div class="col-md-4 mb-5">
                             <div class="card card-flush p-6 pb-5 h-md-100">
                                 <div class="card-body text-center">
-                                    <img src="{{ $product->image?->thumbnail }}" class="rounded-3 mb-4 img-fluid" alt="{{ $product->name }} image"/>
+                                    <img src="{{ $product->images->first()?->thumbnail }}" class="rounded-3 mb-4 img-fluid" alt="{{ $product->name }} image"/>
                                     <div class="mb-2">
                                         <div class="text-center">
                                             <a href="{{ route('products.edit', $product) }}" class="fw-bold text-gray-800 text-hover-primary" data-bs-toggle="tooltip" title="{{ $product->name }}">
@@ -61,7 +61,6 @@
                             </div>
                         </div>
                     @endforeach
-
                     @if ($products->isEmpty())
                         <div class="col-12 mb-5">
                             <div class="card h-md-100">
@@ -133,7 +132,7 @@
                                     </div>
                                 </td>
                                 <td class="pe-0">
-                                    <form action="{{ route('api.products.cart.update', $product) }}"
+                                    <form action="{{ route('api.products.cart.store', $product) }}"
                                           @submit.prevent="$submit()" data-quietly
                                           x-data="{ quantity: {{ $product->quantity }} }"
                                           @change="$dispatch('submit')"

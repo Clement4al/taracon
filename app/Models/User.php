@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function scopeAdmin(Builder $builder): void
     {
-        $builder->whereType('admin');
+        $builder->where('type', 'admin');
     }
 
     /**
@@ -59,7 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function scopeCustomer(Builder $builder): void
     {
-        $builder->whereType('customer');
+        $builder->where('type', 'customer');
     }
 
     /**

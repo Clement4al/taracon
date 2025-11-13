@@ -1,43 +1,34 @@
-<div class="col-md-6 col-lg-6 col-xl-4">
-    <div class="rounded position-relative fruite-item">
-        <div class="fruite-img">
+
+        <div class="thumb pb30">
+            @if($product->discount > 0)
+                <h3 class="badge" style="background-color: #f5c34b; color: black; padding: 10px; position: absolute; left: 20px;" >
+                    -{{ $product->discount }}%
+                </h3>
+            @endif
+{{--            <img src="images/shop-items/shop-item49.png" alt="Shop Item">--}}
             <a href="{{ route('shop.show', $product) }}">
-                <img src="{{ asset('img/fruite-item-5.jpg') }}"
-                     class="img-fluid w-100 rounded-top" alt="">
+                <img src="{{ $product->images->first()?->medium }}" alt="product image">
             </a>
+            <div class="thumb_info home6_style gray_style">
+                <ul class="mb0">
+                    <li><a href=""><span class="flaticon-show"></span></a></li>
+                </ul>
+            </div>
+            <div class="shop_item_cart_btn d-grid"> <a href="page-shop-cart.html" class="btn btn-light-green">Add to Cart</a> </div>
         </div>
-        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-             style="top: 10px; left: 10px;">tags
-        </div>
-        <a href="{{ route('shop.show', $product) }}">
-            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                <a href="{{ route('shop.show', $product) }}">
-                    <h4>{{ $product->name }}</h4>
-                </a>
-                <a href="{{ route('shop.show', $product) }}">This are actually fresh products</a>
-                <div
-                    class="d-flex justify-content-between align-items-start mt-4 flex-wrap">
-                    <!-- Left Section: Price + Discount -->
-                    <div class="d-flex flex-column">
-                        <p class="text-dark fs-5 fw-bold mb-1">
-                            ₦{{ number_format($product->price) }}</p>
-                        @if($product->discount > 0)
-                            <small>
-                                <del class="text-muted">
-                                    ₦{{ number_format($product->discount) }}</del>
-                            </small>
-                        @endif
-                    </div>
-                    <div class="shop_item_cart_btn d-grid">
-                        <form action="{{ route('api.products.cart.store', $product) }}" method="post" x-data @submit.prevent="$submit()" @then="$dispatch('cart-updated')">
-                            <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary ms-auto mt-2 mt-lg-0"> Add to Cart</button>
-                        </form>
-                    </div>
-                    <!-- Right Section: Add to Cart Button -->
+        <div class="details">
+            <div class="sub_title">{{ $product->subcategory?->name }}</div>
+            <div class="title title-56">
+                <a href="{{ route('shop.show', $product) }}">{{ $product->name }}</a>
+            </div>
+            <div class="si_footer">
+                <div class="price">
+                    ₦{{ number_format($product->price) }}
+                    @if($product->discount > 0)
+                        <small>
+                            <del>₦{{ number_format($product->initial_price) }}</del>
+                        </small>
+                    @endif
                 </div>
             </div>
-        </a>
-    </div>
-</div>
-
-
+        </div>

@@ -32,21 +32,23 @@ Route::name('api.')->group(function () {
 
     Route::singleton('cart',  CartController::class)->destroyable()->only('destroy');
 
-    Route::apiResource('products.cart', CartProductController::class)->except(['index', 'show']);
+    Route::apiSingleton('products.cart',    CartProductController::class)->creatable()->except(['index', 'show']);
 
     Route::middleware(['auth', 'can:access'])->group(function () {
         Route::resource('pos',    PosOrderController::class)->only('store');
         Route::resource('users',  UserController::class)->only('store', 'update', 'destroy');
         Route::resource('roles',  RoleController::class)->except('index', 'show');
         Route::resource('brands', BrandController::class)->except('index', 'show');
-//        Route::resource('stock',  StockController::class)->only('store', 'destroy');
+        Route::resource('stock',  StockController::class)->only('store', 'destroy');
 
         Route::resource('categories', CategoryController::class)->only('store', 'update');
         Route::resource('sub-categories',  SubCategoryController::class)->except('index', 'show');
         Route::resource('products',   ProductController::class)->only( 'store', 'update', 'destroy');
         Route::singleton('settings', SettingController::class)->only('update');
 
-        Route::resource('products.images', ProductImageController::class)->only('store', 'destroy')->shallow();
+//        Route::apiResource('images',ImageController::class)->only('store', 'destroy')->shallow();
+
+        Route::apiResource('images', ProductImageController::class)->only('store', 'destroy')->shallow();
     });
 });
 

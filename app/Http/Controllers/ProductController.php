@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::withStock()->filter()->get();
+        $products = Product::with('image')->withStock()->filter()->get();
 
         return view('products.index', compact('products'));
     }

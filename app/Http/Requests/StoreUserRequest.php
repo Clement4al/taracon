@@ -30,8 +30,9 @@ class StoreUserRequest extends FormRequest
             'email'      => 'required|email|unique:users',
             'phone'      => 'required|numeric|min_digits:10|unique:users',
             'gender'     => 'required',
-            'type'       => Rule::can('create', User::class),
-            'role_id'    => 'required_if:type,admin'
+            'type'       => 'filled',
+            'role_id'     => 'nullable',
+//            'role_id'    => ['required_if:request_type,admin', Rule::in(1, 2)],
         ];
     }
 }

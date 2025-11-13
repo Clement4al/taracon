@@ -22,6 +22,7 @@ class Product extends Model
      * The relations to eager load on every query.
      */
     protected $with = ['brand', 'image'];
+    protected $guarded = [];
 
     public function getRouteKeyName(): string
     {
@@ -70,7 +71,9 @@ class Product extends Model
 
     public function image(): HasOne
     {
-        return $this->images()->one()->oldestOfMany();
+//        return $this->images()->one()->oldestOfMany();
+        return $this->hasOne(Image::class)->latestOfMany();
+
     }
 
     public function brand(): BelongsTo

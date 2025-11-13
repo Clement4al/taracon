@@ -16,29 +16,24 @@ class ProductImageController extends Controller
 //        $this->middleware(Authorize::using('manage-shop'));
 //    }
 
-    public function store(Request $request, Product $product)
-    {
-        $product->images()->create(['src' => $request->file]);
-
-        return response()->api('Uploaded successfully');
-    }
-
 //    public function store(Request $request, Product $product)
 //    {
-//        $request->validate([
-//            'file' => 'required|image|max:2048',
-//        ]);
+//        $product->images()->create(['src' => $request->file]);
 //
-//        $image = $product->images()->create([
-//            'src' => $request->file('file'), // ✅ use file('file')
-//        ]);
-//
-//        return response()->api([
-//            'message' => 'Uploaded successfully',
-//            'url' => $image->medium, // ✅ send back usable URL for preview
-//        ]);
+//        return response()->api('Uploaded successfully');
 //    }
 
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'file'       => 'required|file|image|mimes:jpeg,png,jpg,webp|max:3072',
+            'product_id' => 'nullable|exists:products,id',
+        ]);
+        Image::create([
+            'src'        => $validated['file'],
+            'product_id' => $validated['product_id'] ?? null,
+        ]);
+    }
     public function destroy(Image $image)
     {
         $image->delete();

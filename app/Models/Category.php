@@ -22,18 +22,13 @@ class Category extends Model
     {
         return 'slug';
     }
-
+//store
     public function image(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => $value ? cloudinary_url($value, 400, true) : null,
-            set: fn ($value) => $value
-                ? Cloudinary::uploadApi()->upload(
-                    $value->getRealPath(),
-                    ['folder' => config('cloudinary.folders.category')]
-                )['public_id']
-                : null
-        )->withoutObjectCaching();
+            set: fn ($value) => $value ? Cloudinary::uploadApi()->upload($value->getRealPath(), ['folder' => config('cloudinary.folders.category')]
+                )['public_id'] : null )->withoutObjectCaching();
     }
 
     public function thumbnail(): Attribute

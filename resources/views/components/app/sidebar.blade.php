@@ -118,14 +118,14 @@
                         <div class="menu-sub menu-sub-accordion">
                             <!--begin:Menu item-->
                             <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="z-menu menu-link" href="{{ route('brands.index') }}">
-                                <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Brands</span>
-                                </a>
-                                <!--end:Menu link-->
+{{--                                <!--begin:Menu link-->--}}
+{{--                                <a class="z-menu menu-link" href="{{ route('brands.index') }}">--}}
+{{--                                <span class="menu-bullet">--}}
+{{--                                        <span class="bullet bullet-dot"></span>--}}
+{{--                                    </span>--}}
+{{--                                    <span class="menu-title">Brands</span>--}}
+{{--                                </a>--}}
+{{--                                <!--end:Menu link-->--}}
                             </div>
                             <!--end:Menu item-->
 
@@ -142,18 +142,18 @@
                             </div>
                             <!--end:Menu item-->
 
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
+{{--                            <!--begin:Menu item-->--}}
+{{--                            <div class="menu-item">--}}
+{{--                                <!--begin:Menu link-->--}}
 {{--                                <a class="z-menu menu-link" href="{{ route('colors.index') }}">--}}
-                                <a class="z-menu menu-link" href="">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Colors</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
+{{--                                <a class="z-menu menu-link" href="">--}}
+{{--                                    <span class="menu-bullet">--}}
+{{--                                        <span class="bullet bullet-dot"></span>--}}
+{{--                                    </span>--}}
+{{--                                    <span class="menu-title">Colors</span>--}}
+{{--                                </a>--}}
+{{--                                <!--end:Menu link-->--}}
+{{--                            </div>--}}
                             <!--end:Menu item-->
                             <!--begin:Menu item-->
                             <div class="menu-item">
@@ -233,9 +233,7 @@
                     <!--begin:Reports Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-{{--                        <a class="menu-link" href="{{ route('reports.index') }}">--}}
-                            <a class=" menu-link" href="">
-
+                        <a class="menu-link" href="{{ route('reports.index') }}">
                             <span class="menu-icon">
                                 <i class="ki-duotone ki-tablet-text-up fs-1">
                                     <i class="path1"></i>

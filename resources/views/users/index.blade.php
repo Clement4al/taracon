@@ -150,7 +150,7 @@
                                             </div>
                                             @if(request()->type === 'admin')
                                                 <div class="fv-row mb-6">
-                                                    <select name="role_id" data-control="select2" data-placeholder="Select an Admin Role" data-hide-search="true" class="form-select" required>
+                                                    <select name="role_id" data-control="select2" data-placeholder="Select an Admin Role" data-hide-search="true" class="form-select">
                                                         <option></option>
                                                         @foreach($roles as $role)
                                                             <option value="{{ $role->id }}">{{ $role->name }}</option>

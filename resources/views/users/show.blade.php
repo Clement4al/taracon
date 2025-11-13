@@ -376,7 +376,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @can('create', $user, 'admin')
+{{--                                    @can('create', $user)--}}
                                         <div class="rounded border border-dashed border-gray-300 p-6 mt-3 mb-10">
                                             <div class="d-md-flex flex-stack">
                                                 <div class="d-flex flex-column">
@@ -407,7 +407,7 @@
                                                 </div>
                                             </div>
                                         @endadmin
-                                    @endcan
+{{--                                    @endcan--}}
                                     <div class="rounded border border-dashed border-gray-300 p-6 mt-3 mb-10">
                                         <div class="d-md-flex flex-stack">
                                             <div class="d-flex flex-column">
@@ -415,7 +415,7 @@
                                                     <div class="fw-bold fs-4 mb-1 me-1">Delete Account</div>
                                                 </div>
                                                 <div class="fw-semibold fs-6 text-gray-700 mb-4 me-3">{{ ! user()->is($user) ? 'Permanently delete this user account. The user will no
-                                                    longer have access to Bensu with their credentials.' : 'Permanently delete your account. This will deny you any access to Bensu with your present credentials.' }}</div>
+                                                    longer have access to Taracon with their credentials.' : 'Permanently delete your account. This will deny you any access to Taracon with your present credentials.' }}</div>
                                             </div>
                                             <div class="text-nowrap">
                                                 <form action="{{ route('api.users.destroy', $user) }}" method="POST" data-confirm="Are you sure you want to delete this account?" @submit.prevent="$submit()" x-data @then="location.href = @js(route('dashboard'))"

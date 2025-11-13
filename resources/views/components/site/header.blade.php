@@ -1,89 +1,196 @@
-<!-- Spinner Start -->
-<div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"></div>
-</div>
-<!-- Spinner End -->
-
-<!-- Navbar start -->
-<div class="container-fluid fixed-top ">
-    <div class="container topbar bg-dark d-none d-lg-block ">
-        <div class="d-flex justify-content-between ">
-            <div class="top-info ps-2">
-                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">123 Street, Taraba State</a></small>
-                <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">support@taracon.com</a></small>
+<!-- header Top -->
+<!-- header middle -->
+<div class="header_middle home3_style bt1 bb1 pt20 pb20 dn-992">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-xxl-3">
+                <div class="header_top_logo_home3">
+                    <div class="logo">Taracon<span class="color-light-green">.</span></div>
+                </div>
             </div>
-            <div class="top-link pe-2">
-                <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+            <div class="col-lg-5 col-xxl-5">
+                <div class="header_middle_advnc_search">
+                    <div class="search_form_wrapper home7_style">
+                        <div class="row">
+                            <div class="col-auto pr0">
+                                <div class="actegory">
+                                    <select class="selectpicker" id="selectbox_alCategory">
+                                        <option value="AllCategory">All Category</option>
+                                        @foreach(app('categories') as $category)
+                                            <option value="{{ $category->slug }}" @selected(request('category') == $category->slug)>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                           <x-site.search-bar />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-xxl-4 pr0-lg">
+                <div class="hm_log_fav_cart_widget justify-content-center">
+                    <div class="wrapper">
+                        <ul class="mb0">
+                            @auth()
+                                <li class=list-inline-item> <a class="header_top_iconbox home7_style " href="{{ route('dashboard') }}">
+                                        <div class="d-block d-md-flex">
+                                            <div class=icon><span class=flaticon-profile></span></div>
+                                            <div class=details>
+                                                <p class=subtitle>{{ user()->first_name  }}</p>
+                                                <h5 class=title>{{ user()->last_name  }}</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="list-inline-item"> <a class="header_top_iconbox home7_style signin-filter-btn" href="#">
+                                        <div class="d-block d-md-flex">
+                                            <div class="icon"><span class="flaticon-profile"></span></div>
+                                            <div class="details">
+                                                <p class="subtitle">Sign In</p>
+                                                <h5 class="title">Account</h5>
+                                            </div>
+                                        </div>
+                                    </a> </li>
+                            @endauth
+{{--                            <li class="list-inline-item"> <a class="header_top_iconbox home7_style" href="page-account-wishlist.html">--}}
+{{--                                    <div class="d-block d-md-flex">--}}
+{{--                                        <div class="icon"><span class="flaticon-heart"></span></div>--}}
+{{--                                        <div class="details">--}}
+{{--                                            <p class="subtitle">Wishlist</p>--}}
+{{--                                            <h5 class="title">My Items</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a> </li>--}}
+
+                            <li class="list-inline-item"> <a class="header_top_iconbox home7_style cart-filter-btn" href="#">
+                                    <div class="d-block d-md-flex">
+                                        <div class="icon"><span class="far fa-cart-shopping fz17"></span><span class="badge heading-color">2</span></div>
+                                        <div class="details">
+                                            <p class="subtitle">$200.99</p>
+                                            <h5 class="title">Total</h5>
+                                        </div>
+                                    </div>
+                                </a> </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container px-0">
-        <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="/" class="navbar-brand">
-                <h1 class="display-6 mb-0 logo-gradient">Taracon</h1>
-            </a>
-            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars text-primary"></span>
-            </button>
-                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-                        <div class="navbar-nav mx-auto">
-                            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                            <x-nav-link href="/shop" :active="request()->is('shop')">Shop</x-nav-link>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
-                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item">Cart</a>
-                                    <a href="chackout.html" class="dropdown-item">Checkout</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
-                                </div>
-                            </div>
-                            <x-nav-link href="/about-us" :active="request()->is('about-us')">About Us</x-nav-link>
-                            <x-nav-link href="/contact-us" :active="request()->is('contact-us')">Contact Us</x-nav-link>
-                        </div>
-
-                        <div class="d-flex m-3 me-0">
-                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-                                    data-bs-toggle="modal" data-bs-target="#searchModal">
-                                <i class="fas fa-search text-dark"></i>
-                            </button>
-                            @auth()
-                                <a href="{{ route('dashboard') }}"
-                                   class="d-flex align-items-center my-auto text-decoration-none text-dark">
-                                    <i class="fas fa-user fa-2x me-2"></i>
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-0">{{ user()->first_name }}</h6>
-                                        <h6 class="mb-0">{{ user()->last_name }}</h6>
-                                    </div>
-                                </a>
-                            @else
-                                <a href="{{ route('login') }}"
-                                   class="d-flex align-items-center my-auto text-decoration-none text-dark">
-                                    <i class="fas fa-user fa-2x me-2"></i>
-                                    <div class="d-flex flex-column">
-                                        <p class="mb-0">Sign In</p>
-                                        <h6 class="mb-0">Account</h6>
-                                    </div>
-                                </a>
-                            @endauth()
-                        </div>
-
-                    <a href="/cart" class="position-relative ms-4 my-auto text-dark">
-                        <i class="fa fa-shopping-bag fa-2x text-dark me-3"></i>
-                        <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
-                            <livewire:cart-count />
-                        </span>
-                    </a>
-                        <div class="d-flex flex-column">
-                            <h6 class="mb-0">Total</h6>
-                            <h6 class="mb-0">N4000</h6>
-                       </div>
+</div>
+<!-- Main Header Nav -->
+<header class="header-nav menu_style_home_one menu_home5_style athome7 main-menu">
+    <!-- Ace Responsive Menu -->
+    <nav class="posr">
+        <div class="container posr menu_bdrt1">
+            <!-- Menu Toggle btn-->
+            <div class="menu-toggle">
+                <button type="button" id="menu-btn"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <div class="posr logo1 home7_style">
+                <div class="bgc-light-green pt-2" id="mega-menu"> <a class="btn-mega home7_style d-flex justify-content-between align-items-center ps-3" href="#"> <img src="images/desktop-nav-menu-white.svg" alt="Desktop Menu Icon"> <span class="fw500 fz16 color-white vam">Browse Categories</span> <span class="far fa-angle-down me-3 color-white"></span> </a>
+                    <ul class="menu">
+                    </ul>
                 </div>
-        </nav>
+            </div>
+            <!-- Responsive Menu Structure-->
+            <ul id="respMenu" class="ace-responsive-menu menu_list_custom_code wa pl300 pl220-lg" data-menu-style="horizontal">
+                <li class="visible_list"> <a href="#"><span class="title">Home</span></a></li>
+                <li class="megamenu_style"> <a href="#"><span class="title">Shop</span></a></li>
+                <li class="visible_list"> <a href="#"><span class="title">Our Stores</span></a></li>
+
+                <li class="visible_list"> <a href="#"><span class="title">Blog</span></a>
+                    <ul>
+                        <li><a href="page-blog-grid.html">Blog Grid</a></li>
+                        <li><a href="page-blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
+                    </ul>
+                </li>
+                <li class="visible_list"> <a href="#"><span class="title">About Us</span></a></li>
+                <li class="visible_list"> <a href="#"><span class="title">Contact Us</span></a></li>
+            </ul>
+            <ul id="respMenu2" class="ace-responsive-menu widget_menu_home2 wa" data-menu-style="horizontal">
+                <li class="list-inline-item list_c me-0"><a href="#">Hot Deals</a></li>
+                <li class="list-inline-item list_c me-0"><a href="#">Top Categories</a></li>
+                <li class="list-inline-item list_c me-0"><a href="#">Best Sellers</a></li>
+                <li class="list-inline-item list_c me-0"><a href="#">New Arrivals</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Body Ovelay Behind Sidebar -->
+<div class="hiddenbar-body-ovelay"></div>
+<!-- Sign In Hiddn SideBar -->
+<div class="signin-hidden-sbar">
+    <div class="hsidebar-header">
+        <div class="sidebar-close-icon"><span class="flaticon-close"></span></div>
+        <h4 class="title">Sign-In</h4>
+    </div>
+    <div class="hsidebar-content">
+        <div class="log_reg_form sidebar_area">
+            <div class="login_form">
+                <form id="signin-form" action="{{ route('api.login') }}" method="POST" x-data @submit.prevent="$submit()" @then="location.reload()">
+{{--                    <form action="{{ route('api.login') }}"--}}
+{{--                            x-data @submit.prevent="$submit()"--}}
+{{--                            @then="location.reload()"--}}
+{{--                            class="form w-100"--}}
+{{--                            x-transition:enter--}}
+{{--                            --}}{{--x-show="! forgot"--}}
+{{--                            method="post"--}}
+{{--                    >--}}
+                    <div class="mb-2 mr-sm-2">
+                        <label class="form-label">Email</label>
+                        <input id="email" name="email" type="email" class=form-control placeholder="Enter email address..." required>
+                    </div>
+                    <!--begin::Input group-->
+                    <div class="fv-row mb-4" data-kt-password-meter="true">
+                        <!--begin::Wrapper-->
+                        <div class="mb-1">
+                            <label for="password" class=form-label>Password</label>
+                            <!--begin::Input wrapper-->
+                            <div class="position-relative mb-3">
+                                <input id="password" name="password" type="password" class="form-control" placeholder="Enter Password..."/>
+                                <span class="position-absolute translate-middle top-50 end-0" onclick="togglePasswordVisibility()">
+                                    <i class="bi bi-eye-slash fs-5"></i>
+                                    <i class="bi bi-eye fs-5 d-none"></i>
+                                </span>
+                            </div>
+                            <!--end::Input wrapper-->
+                        </div>
+                        <!--end::Wrapper-->
+                    </div>
+                    <!--end::Input group--->
+                    <div class="custom-control custom-checkbox">
+                        <input type=checkbox name="remember" class=custom-control-input id=remember>
+                        <label class=custom-control-label for=remember>Remember me</label>
+                        <a class="btn-fpswd float-end" href="#">Forgot Password?</a>
+                    </div>
+                    <button type=submit class="btn btn-log btn-thm mt20">Sign In</button>
+                    <p class="text-center mb25 mt10">Don't have an account? <a href="{{ route('register') }}">Create account</a></p>
+                    <div class="hr_content">
+                        <hr>
+                        <span class="hr_top_text">or</span> </div>
+                    <ul class="login_with_social text-center mt30 mb0">
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-google"></i></a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-<!-- Navbar End -->
+<!--End Sign In Hiddn SideBar -->
 
-<x-site.search-bar id="search"/>
+@push('scripts')
+    <script>
+        const togglePasswordVisibility = () => {
+            const passwordInput = $('#password');
+            passwordInput.attr('type', (i, val) => (val === 'password' ? 'text' : 'password'));
+            $('.bi-eye, .bi-eye-slash').toggleClass('d-none');
+            passwordInput.focus();
+        };
+    </script>
+@endpush

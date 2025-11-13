@@ -34,8 +34,8 @@ class UpdateUserRequest extends FormRequest
             'phone'             => ['filled', 'digits_between:10,15', $unique],
             'photo'             => 'image',
             'notifiable'        => 'boolean',
-            'type'              => Rule::can('create', User::class, 'admin'),
-            'role_id'           => Rule::can('create', User::class, 'admin'),
+            'type'              => 'filled',
+            'role_id'           => 'filled',
             'banned_until'      => [Rule::can('create', User::class, 'admin'), 'nullable', 'date'],
         ];
     }

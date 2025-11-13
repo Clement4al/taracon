@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Location;
+use App\Models\Product;
 use App\Models\User;
 use App\Support\Cart;
+use Illuminate\Foundation\AliasLoader;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Routing\ResponseFactory;
@@ -29,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Give the Laravel facade a unique alias to avoid conflict
+        AliasLoader::getInstance()->alias('CloudinaryFacade', Cloudinary::class);
+
         $this->app->singleton('cart', function () {
             return new Cart();
         });
@@ -40,13 +48,17 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Model::unguard();
+        // Give the Laravel facade a unique alias to avoid conflict
+        AliasLoader::getInstance()->alias('CloudinaryFacade', Cloudinary::class);
 
+        Model::unguard();
+        $this->registerCustomBladeDirectives();
         $this->registerMigrationMacros();
         $this->registerApiResponseMacros();
-        $this->registerCustomBladeDirectives();
         $this->registerCarbonMacro();
+        $this->registerCacheableApplicationModels();
 
+//
 //        $this->routes(function () {
 //            Route::middleware('api')
 //                ->prefix('api')->name('api.')
@@ -56,15 +68,15 @@ class AppServiceProvider extends ServiceProvider
 //                ->group(base_path('routes/web.php'));
 //        });
         Paginator::useBootstrapFive();
-
     }
 
     public function registerApiResponseMacros(): void
     {
         ResponseFactory::macro('api', function (string $message, $data = [], $status = 200, array $headers = []) {
-           return response()->json(['message' => $message, 'data' => $data], $status, $headers);
+            return response()->json(['message' => $message, 'data' => $data], $status, $headers);
         });
     }
+
     public function registerCarbonMacro()
     {
         Carbon::macro('greet', fn () => match (true) {
@@ -73,10 +85,10 @@ class AppServiceProvider extends ServiceProvider
             default    => 'Evening'
         });
     }
-
     /**
      * Bootstrap any application services.
      */
+
     public function registerMigrationMacros()
     {
         Blueprint::macro('authors', function () {
@@ -86,7 +98,22 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    public function registerCustomBladeDirectives()
+    public function registerCacheableApplicationModels()
+    {
+        $this->app->bind('categories',
+            fn () => Category::latest('relevance')->withWhereHas('subCategories')->get() // Todo: Cache forever
+        );
+
+        $this->app->bind('locations',
+            fn () => Location::whereNotNull('featured_at')->get() // Todo: Cache forever
+        );
+
+        $this->app->bind('featured_products',
+            fn () => Product::featured()->whereHas('image')->get() // Todo: Cache forever
+        );
+    }
+
+        public function registerCustomBladeDirectives()
     {
         Blade::if('admin', function (?User $user = null) {
             return ($user ?? user())->isAdmin();

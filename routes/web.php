@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 //use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ShopController;
@@ -23,11 +24,13 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/counter', [AppCart::class]);
 // Define global parameter mapping first
 
-//Route::get('/welcome', function () {
-//    return view('welcome');
-//});
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/oauth/{provider}/authorize', [OAuthController::class, 'create'])->name('oauth.create');
+Route::get('/oauth/{provider}/redirect',  [OAuthController::class, 'store'])->name('oauth.store');
 
 Route::get('/contact-us', function () {
     return view('contact-us');
@@ -36,7 +39,7 @@ Route::get('/contact-us', function () {
 Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
-Route::view('/pos',         'pos')->name('pos')->can('point-of-sale');
+Route::view('/pos','pos')->name('pos')->can('point-of-sale');
 
 Route::middleware('guest')->group(function () {
     Route::view('/login', 'auth.login')->name('login');
@@ -63,7 +66,7 @@ Route::middleware(['auth', 'can:access'])->group(function () {
     Route::resource('brands',              BrandController::class)->only('index');
 //    Route::resource('colors',              ColorController::class)->only('index');
 //    Route::resource('flyers',              FlyerController::class)->only('index', 'create');
-//    Route::resource('reports',             ReportController::class)->only('index');
+    Route::resource('reports',              ReportController::class)->only('index');
     Route::resource('products',            ProductController::class)->only('index', 'create', 'edit');
 //    Route::resource('transfers',           TransferController::class)->only('index', 'show');
 //    Route::resource('locations',           LocationController::class)->only('index', 'show');

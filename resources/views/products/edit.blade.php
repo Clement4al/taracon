@@ -49,15 +49,17 @@
                                 </div>
                                 <div class="card-body pt-0">
                                     <div class="fv-row mb-2">
-                                        <div class="dropzone" data-endpoint="{{ route('api.products.images.store', $product) }}">
+                                        <div class="dropzone" data-product-id="{{ $product->id }}"
+                                             data-endpoint="{{ route('api.images.store') }}">
                                             @foreach($product->images as $image)
                                                 <div class="dz-preview" x-data="{ show: true }" x-show="show" x-transition>
-                                                    <img src="{{ $image->medium }}" alt="product image" width="120" class="rounded">
-                                                     <form action="{{ route('api.images.destroy', $image) }}"
-                                                           @submit.prevent="$submit()" data-confirm method="POST" @then="show = false"
-                                                     >
-                                                         @method('DELETE')
-                                                         <button class="dz-remove"></button>
+                                                    <img src="{{ $image->src }}" alt="product image" width="120" class="rounded">
+                                                    <form action="{{ route('api.images.destroy', $image) }}"
+                                                          x-submit data-confirm method="POST" @finish="show = false"
+                                                    >
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="dz-remove"></button>
                                                     </form>
                                                 </div>
                                             @endforeach
@@ -79,7 +81,7 @@
                                 class="form d-flex flex-column flex-xl-row"
                                 method="POST"
                                 @submit.prevent="$submit()"
-                                x-data
+                                x-data x-submit
                             >
                                 @method('PUT')
                                 <!--begin::Aside column-->
@@ -432,13 +434,20 @@
                     tagify.loadOriginalValues();
                 });
 
+
                 document.querySelectorAll('.dropzone').forEach((element) => {
+                    const productId = element.dataset.productId;
                     new Dropzone(element, {
                         url: element.dataset.endpoint,
                         paramName: "file",
                         maxFiles: 10,
                         maxFilesize: 10,
                         addRemoveLinks: true,
+                        init: function () {
+                            this.on("sending", function (file, xhr, formData) {
+                                formData.append("product_id", productId);
+                            });
+                        },
                         accept: function (file, done) {
                             if (file.name == "wow.jpg") {
                                 done("Naha, you don't.");

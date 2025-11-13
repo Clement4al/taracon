@@ -30,4 +30,7 @@ class RegisteredUserController extends Controller
         return response()->api('Your account has been registered successfully, use your credentials to login.');
     }
 }
+
+
+
 ////            'gender'     => 'required',

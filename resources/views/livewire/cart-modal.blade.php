@@ -1,7 +1,7 @@
 <div class="cart-hidden-sbar" x-data @cart-updated.window="$wire.call('$refresh')">
     <div class=hsidebar-header>
         <div class=sidebar-close-icon><span class=flaticon-close></span></div>
-        <h4 class=title>You Cart</h4>
+        <h4 class=title>Your Cart</h4>
     </div>
     <div class=hsidebar-content>
         <div class="log_fav_cart_widget hsidebar_home_page">
@@ -13,7 +13,7 @@
                                 <li class="list_content" wire:key="{{ $product->id }}">
                                     <div>
                                         <a href="{{ route('shop.show', $product) }}">
-                                            <img class="float-start mt10" src="{{ $product->image?->thumbnail }}" alt="">
+                                            <img class="float-start mt10" src="{{ $product->images->first()?->medium}}" alt="">
                                             <p data-bs-toggle="tooltip" title="{{ $product->name }}">{{ str($product->name)->limit(35) }}</p>
                                         </a>
                                         <div class="cart_btn home_page_sidebar mt10">

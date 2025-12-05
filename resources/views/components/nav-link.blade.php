@@ -6,13 +6,23 @@
 {{-->{{ $slot }}</a>--}}
 
 
-@props(['active' => false, ])
+{{--@props(['active' => false, ])--}}
+
+{{--@php--}}
+{{--    $classes = 'nav-item nav-link';--}}
+{{--    if ($active) $classes .= ' active';--}}
+{{--@endphp--}}
+
+{{--<a {{ $attributes->merge(['class' => $classes]) }} aria-current="{{ $active ? 'page' : 'false' }}">--}}
+{{--    {{ $slot }}--}}
+{{--</a>--}}
+@props(['active' => false])
 
 @php
-    $classes = 'nav-item nav-link';
+    $classes = 'visible_list'; // default class for top-level items
     if ($active) $classes .= ' active';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }} aria-current="{{ $active ? 'page' : 'false' }}">
-    {{ $slot }}
-</a>
+<li class="{{ $classes }}">
+    <a {{ $attributes }}><span class="title">{{ $slot }}</span></a>
+</li>

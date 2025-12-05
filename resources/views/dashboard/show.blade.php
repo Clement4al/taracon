@@ -16,7 +16,7 @@
                                         </span>
 
                                         <span class="fs-4 text-white">
-{{--                                            <span class="opacity-75">You have {{ $awaiting_delivery }} orders to process</span>--}}
+                                            <span class="opacity-75">You have {{ $awaiting_delivery }} orders to process</span>
                                         </span>
                                     </h3>
                                 </div>
@@ -74,7 +74,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="m-0">
-{{--                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($orders_count) }}</span>--}}
+                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($orders_count) }}</span>
                                                         <span class="text-gray-500 fw-semibold fs-6">Orders</span>
                                                     </div>
                                                 </div>
@@ -91,7 +91,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="m-0">
-{{--                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($awaiting_delivery) }}</span>--}}
+                                                        <span class="text-gray-700 fw-bolder d-block fs-2qx mb-1">{{ number_format($awaiting_delivery) }}</span>
                                                         <span class="text-gray-500 fw-semibold fs-6">Awaiting Delivery</span>
                                                     </div>
                                                 </div>
@@ -112,7 +112,7 @@
                                     <h4>Recent Orders</h4>
                                 </div>
                                 <div class="card-toolbar">
-{{--                                    <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary">--}}
+                                    <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary">
                                         View all <i class="bi bi-chevron-right p-0"></i>
                                     </a>
                                 </div>
@@ -131,43 +131,43 @@
                                     </tr>
                                     </thead>
                                     <tbody class="fw-semibold text-gray-600">
-{{--                                    @foreach($orders as $order)--}}
-{{--                                        <tr>--}}
-{{--                                            <td data-order="{{ $order->id }}" class="min-w-50px">--}}
-{{--                                                <a href="{{ route('orders.show', $order) }}" class="text-gray-800 text-hover-primary fw-bold"># {{ $order->id }}</a>--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <div class="d-flex align-items-center">--}}
-{{--                                                    <div class="symbol symbol-circle symbol-35px overflow-hidden me-2">--}}
-{{--                                                        <a href="{{ route('users.show', $order->user) }}">--}}
-{{--                                                            <div class="symbol-label">--}}
-{{--                                                                <img src="{{ $order->user->photo }}" alt="{{ $order->user->name }}" class="w-100" />--}}
-{{--                                                            </div>--}}
-{{--                                                        </a>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="ms-2">--}}
-{{--                                                        <a href="{{ route('users.show', $order->user) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ $order->user->name }}</a>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </td>--}}
-{{--                                            <td class="pe-0">--}}
-{{--                                                <!--begin::Badges-->--}}
-{{--                                                <x-payment-status :$order />--}}
-{{--                                                <br>--}}
-{{--                                                <x-order-status :$order />--}}
-{{--                                                <!--end::Badges-->--}}
-{{--                                            </td>--}}
-{{--                                            <td class="pe-0" data-order="{{ $order->total }}">--}}
-{{--                                                <span class="fw-bold">₦{{ number_format($order->total) }}</span>--}}
-{{--                                            </td>--}}
-{{--                                            <td data-order="{{ $order->user->phone }}">--}}
-{{--                                                <span class="fw-bold">{{ $order->user->phone }}</span>--}}
-{{--                                            </td>--}}
-{{--                                            <td class="min-w-50px" data-order="{{ $order->created_at }}">--}}
-{{--                                                <span class="fw-bold">{{ $order->created_at->toDayDateTimeString() }}</span>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                    @endforeach--}}
+                                    @foreach($orders as $order)
+                                        <tr>
+                                            <td data-order="{{ $order->id }}" class="min-w-50px">
+                                                <a href="{{ route('orders.show', $order) }}" class="text-gray-800 text-hover-primary fw-bold"># {{ $order->id }}</a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="symbol symbol-circle symbol-35px overflow-hidden me-2">
+                                                        <a href="{{ route('users.show', $order->user) }}">
+                                                            <div class="symbol-label">
+                                                                <img src="{{ $order->user->photo }}" alt="{{ $order->user->name }}" class="w-100" />
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="ms-2">
+                                                        <a href="{{ route('users.show', $order->user) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ $order->user->name }}</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="pe-0">
+                                                <!--begin::Badges-->
+                                                <x-payment-status :$order />
+                                                <br>
+                                                <x-order-status :$order />
+                                                <!--end::Badges-->
+                                            </td>
+                                            <td class="pe-0" data-order="{{ $order->total }}">
+                                                <span class="fw-bold">₦{{ number_format($order->total) }}</span>
+                                            </td>
+                                            <td data-order="{{ $order->user->phone }}">
+                                                <span class="fw-bold">{{ $order->user->phone }}</span>
+                                            </td>
+                                            <td class="min-w-50px" data-order="{{ $order->created_at }}">
+                                                <span class="fw-bold">{{ $order->created_at->toDayDateTimeString() }}</span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

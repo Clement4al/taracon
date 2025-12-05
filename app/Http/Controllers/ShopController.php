@@ -31,8 +31,8 @@ class ShopController extends Controller
     {
         $product->load(['subCategory.products' => fn ($query) => $query->take(10)]);
 
-//        $recommendedProducts = Product::whereHas('image')->inRandomOrder()->take(10)->get();
+        $recommendedProducts = Product::whereHas('image')->inRandomOrder()->take(10)->get();
 
-        return view('shop.show', compact('product' ));
+        return view('shop.show', compact('product', 'recommendedProducts'));
     }
 }

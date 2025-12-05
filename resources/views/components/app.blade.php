@@ -17,7 +17,7 @@
     <link href="{{ asset('admin/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('admin/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
 
-    <livewire:styles />
+    @livewireStyles
 
 {{--    @include('partials.google-analytics')--}}
 </head>
@@ -144,7 +144,7 @@
     $('.menu-link[href="{{ url()->full() }}"]').addClass('active').closest('.menu-accordion').addClass('here show');
 </script>
 
-<livewire:scripts />
+@livewireScripts
 
 @stack('scripts')
 

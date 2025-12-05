@@ -95,9 +95,7 @@
 
                                             <td>{{ $user->gender }}</td>
                                             <td data-order="{{ $user->orders_count }}">
-{{--                                                <a href="{{ route('users.orders.index', $user) }}">{{ $user->orders_count }}</a>--}}
-                                                 <a href="">33</a>
-
+                                                <a href="{{ route('users.orders.index', $user) }}">{{ $user->orders_count }}</a>
                                             </td>
                                             <td>{{ $user->phone }}</td>
                                         </tr>

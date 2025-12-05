@@ -192,7 +192,7 @@
                             </a>
                             <!--begin::Menu sub-->
                             <div class="menu-sub menu-sub-dropdown w-350px w-lg-550px py-4 px-lg-5">
-{{--                                <livewire:app-cart />--}}
+                                <livewire:app-cart />
                             </div>
                             <!--end::Menu sub-->
                         </div>

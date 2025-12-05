@@ -67,9 +67,7 @@
                                     <!--end::Info-->
                                 </div>
                                 <!--end::User-->
-{{--                                <a href="{{ route('users.orders.index', $user) }}" class="btn btn-sm btn-light-info m-3 fw-bold">--}}
-                                 <a href="" class="btn btn-sm btn-light-info m-3 fw-bold">
-
+                                <a href="{{ route('users.orders.index', $user) }}" class="btn btn-sm btn-light-info m-3 fw-bold">
                                 <span class="svg-icon svg-icon-muted svg-icon-1">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path opacity="0.3" d="M20 22H4C3.4 22 3 21.6 3 21V2H21V21C21 21.6 20.6 22 20 22Z" fill="currentColor"/>
@@ -377,6 +375,7 @@
                                             </div>
                                         </div>
 {{--                                    @can('create', $user)--}}
+                                    @admin
                                         <div class="rounded border border-dashed border-gray-300 p-6 mt-3 mb-10">
                                             <div class="d-md-flex flex-stack">
                                                 <div class="d-flex flex-column">
@@ -390,8 +389,7 @@
                                                     <a href="#edit-type-modal" data-bs-toggle="modal" class="btn btn-primary">Change Account Type</a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        @admin($user)
+                                             </div>
                                             <div class="rounded border border-dashed border-gray-300 p-6 mb-10">
                                                 <div class="d-md-flex flex-stack">
                                                     <div class="d-flex flex-column">

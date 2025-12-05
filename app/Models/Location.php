@@ -2,11 +2,31 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Concerns\HasAuthor;
+use App\Observers\Observable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Location extends Model
 {
-    /** @use HasFactory<\Database\Factories\LocationFactory> */
-    use HasFactory;
+    use SoftDeletes, HasAuthor, Observable;
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function isPublic()
+    {
+        return $this->featured_at != null;
+    }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, Stock::class)
+            ->as('stock')
+            ->withPivot(['id', 'quantity', 'created_by', 'updated_by'])
+            ->withTimestamps();
+    }
 }

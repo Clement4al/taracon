@@ -22,9 +22,7 @@
                             </div>
                             <div class="card-toolbar">
                                 <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-{{--                                    <a href="{{ route('stock.create') }}" class="btn btn-sm btn-light-primary me-3">--}}
-                                        <a href="" class="btn btn-sm btn-light-primary me-3">
-
+                                    <a href="{{ route('stock.create') }}" class="btn btn-sm btn-light-primary me-3">
                                         <span class="svg-icon svg-icon-3">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path opacity="0.3" d="M18.041 22.041C18.5932 22.041 19.041 21.5932 19.041 21.041C19.041 20.4887 18.5932 20.041 18.041 20.041C17.4887 20.041 17.041 20.4887 17.041 21.041C17.041 21.5932 17.4887 22.041 18.041 22.041Z" fill="currentColor"/>
@@ -35,8 +33,7 @@
                                         </span>
                                         Received Inventory
                                     </a>
-{{--                                    <a href="{{ route('bulk-products.index') }}" class="btn btn-sm btn-primary">--}}
-                                        <a href="" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('bulk-products.index') }}" class="btn btn-sm btn-primary">
                                         <span class="svg-icon svg-icon-2">
                                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>

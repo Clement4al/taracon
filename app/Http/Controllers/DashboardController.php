@@ -18,11 +18,10 @@ class DashboardController extends Controller
 
         $customers_count    = User::customer()->count();
         $products_count     = Product::count();
-//        $orders_count       = Order::count();
-//        $awaiting_delivery  = Order::whereNull('delivered_at')->count();
-//
+        $orders_count       = Order::count();
+        $awaiting_delivery  = Order::whereNull('delivered_at')->count();
         return view('dashboard.show', compact([
-            'orders', 'customers_count', 'products_count'
+            'orders', 'customers_count', 'products_count', 'orders_count', 'awaiting_delivery'
         ]));
     }
 }

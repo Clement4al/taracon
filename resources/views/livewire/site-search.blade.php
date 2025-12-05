@@ -1,35 +1,27 @@
-<div class="position-relative">
-    <form id="{{ $id ?? 'search-form' }}" action="{{ route('shop.index') }}" method="GET">
-        <div class="input-group">
-            <input class="form-control p-3" name="q" placeholder="Search products…" aria-label="search"
-                   value="{{ request('q') }}" wire:model.live="search">
-            <button class="btn btn-outline-secondary p-3" type="submit" id="search-icon-1">
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
-    </form>
-
-    @if(!empty($search) && $products->count() > 0)
-        <div class="search-suggestions position-absolute w-100 bg-white border border-top-0 shadow-sm" style="z-index: 1000; max-height: 300px; overflow-y: auto;">
-            <ul class="list-unstyled m-0">
+<div class="box-search" id="search">
+    <input class="form_control" name="q" placeholder="Search products…" aria-label="search"
+           value="{{ request('q') }}" wire:model.live="search" minlength="2" style="min-width: 295px;">
+    <div class="search-suggestions" wire:ignore.self>
+        <div class="box-suggestions">
+            <ul>
                 @foreach($products as $product)
-                    <li class="border-bottom">
-                        <a href="{{ route('shop.show', $product) }}" class="text-decoration-none d-flex align-items-center p-3 hover-bg-light">
-                            <div class="thumb me-3">
-                                {{-- <img src="{{ $product->image?->thumbnail }}" alt="{{ $product->name }}" class="rounded" width="40" height="40"> --}}
+                    <a href="{{ route('shop.show', $product) }}">
+                        <li>
+                            <div class="thumb">
+                                <img src="{{ $product->images->first()?->thumbnail }}" alt="{{ $product->name }}">
                             </div>
-                            <div class="info-product flex-grow-1">
-                                <div class="item_title text-dark fw-medium">{{ $product->name }}</div>
+                            <div class="info-product">
+                                <div class="item_title">{{ $product->name }}</div>
                                 <div class="price">
-                                    <span class="sale text-sucess fw-bold">
+                                    <span class="sale">
                                         ₦{{ number_format($product->price) }}
                                     </span>
                                 </div>
                             </div>
-                        </a>
-                    </li>
+                        </li>
+                    </a>
                 @endforeach
             </ul>
         </div>
-    @endif
+    </div>
 </div>

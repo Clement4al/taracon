@@ -79,12 +79,12 @@
                     </div>
                     <!--end:Menu item-->
                 @endcan
+
                 @can('manage-order')
                     <!--begin:Order Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-{{--                        <a class="menu-link" href="{{ route('orders.index') }}">--}}
-                            <a class="menu-link" href="">
+                        <a class="menu-link" href="{{ route('orders.index') }}">
                                 <span  class="menu-icon">
                                     <i class="ki-duotone ki-chart-line-up fs-3"><i class="path1"></i><i class="path2"></i></i>
                                 </span>
@@ -94,6 +94,7 @@
                     </div>
                     <!--end:Menu item-->
                 @endcan
+
                 @can('manage-shop')
                     <!--begin:Shop Menu item-->
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -114,20 +115,9 @@
                             <span class="menu-arrow"></span>
                         </span>
                         <!--end:Menu link-->
+
                         <!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-{{--                                <!--begin:Menu link-->--}}
-{{--                                <a class="z-menu menu-link" href="{{ route('brands.index') }}">--}}
-{{--                                <span class="menu-bullet">--}}
-{{--                                        <span class="bullet bullet-dot"></span>--}}
-{{--                                    </span>--}}
-{{--                                    <span class="menu-title">Brands</span>--}}
-{{--                                </a>--}}
-{{--                                <!--end:Menu link-->--}}
-                            </div>
-                            <!--end:Menu item-->
 
                             <!--begin:Menu item-->
                             <div class="menu-item">
@@ -171,8 +161,6 @@
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="z-menu menu-link" href="{{ route('sub-categories.index') }}">
-{{--                                     <a class="z-menu menu-link" href="">--}}
-
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -210,9 +198,7 @@
                     <!--begin:Locations Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-{{--                        <a class="menu-link" href="{{ route('locations.index') }}">--}}
-                        <a class=" menu-link" href="">
-
+                        <a class="menu-link" href="{{ route('locations.index') }}">
                             <span class="menu-icon">
                                 <!--begin::Svg Icon-->
                                 <span class="svg-icon svg-icon-2">
@@ -359,7 +345,7 @@
                 @customer
                     <!--begin:Menu item-->
                     <div class="menu-item menu-accordion">
-{{--                    <a href="{{ route('users.orders.index', user()) }}" class="menu-link">--}}
+                    <a href="{{ route('users.orders.index', user()) }}" class="menu-link">
                         <span class="menu-icon">
                         <span class="svg-icon svg-icon-3">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -16,7 +16,7 @@ class Image extends Model
     public function src(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? cloudinary_url($value, 400, true) : null,
+            get: fn ($value) => $value ? cloudinary_url($value, 1000, true) : null,
             set: fn ($value) => $value ? Cloudinary::uploadApi()->upload($value->getRealPath(), ['folder' => config('cloudinary.folders.product')]
             )['public_id'] : null )->withoutObjectCaching();
     }

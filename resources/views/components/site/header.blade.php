@@ -24,7 +24,7 @@
                                     </select>
                                 </div>
                             </div>
-                           <x-site.search-bar />
+                           <x-site.search-bar id="search"/>
                         </div>
                     </div>
                 </div>
@@ -67,9 +67,13 @@
 
                             <li class="list-inline-item"> <a class="header_top_iconbox home7_style cart-filter-btn" href="#">
                                     <div class="d-block d-md-flex">
-                                        <div class="icon"><span class="far fa-cart-shopping fz17"></span><span class="badge heading-color">2</span></div>
+                                        <div class="icon"><span class="far fa-cart-shopping fz17"></span><span class="badge heading-color">
+                                        <livewire:cart-count />
+                                        </span></div>
                                         <div class="details">
-                                            <p class="subtitle">$200.99</p>
+                                            <p class="subtitle">
+                                                <livewire:cart-price />
+                                            </p>
                                             <h5 class="title">Total</h5>
                                         </div>
                                     </div>
@@ -82,44 +86,6 @@
     </div>
 </div>
 <!-- Main Header Nav -->
-<header class="header-nav menu_style_home_one menu_home5_style athome7 main-menu">
-    <!-- Ace Responsive Menu -->
-    <nav class="posr">
-        <div class="container posr menu_bdrt1">
-            <!-- Menu Toggle btn-->
-            <div class="menu-toggle">
-                <button type="button" id="menu-btn"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            </div>
-            <div class="posr logo1 home7_style">
-                <div class="bgc-light-green pt-2" id="mega-menu"> <a class="btn-mega home7_style d-flex justify-content-between align-items-center ps-3" href="#"> <img src="images/desktop-nav-menu-white.svg" alt="Desktop Menu Icon"> <span class="fw500 fz16 color-white vam">Browse Categories</span> <span class="far fa-angle-down me-3 color-white"></span> </a>
-                    <ul class="menu">
-                    </ul>
-                </div>
-            </div>
-            <!-- Responsive Menu Structure-->
-            <ul id="respMenu" class="ace-responsive-menu menu_list_custom_code wa pl300 pl220-lg" data-menu-style="horizontal">
-                <li class="visible_list"> <a href="#"><span class="title">Home</span></a></li>
-                <li class="megamenu_style"> <a href="#"><span class="title">Shop</span></a></li>
-                <li class="visible_list"> <a href="#"><span class="title">Our Stores</span></a></li>
-
-                <li class="visible_list"> <a href="#"><span class="title">Blog</span></a>
-                    <ul>
-                        <li><a href="page-blog-grid.html">Blog Grid</a></li>
-                        <li><a href="page-blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-                    </ul>
-                </li>
-                <li class="visible_list"> <a href="#"><span class="title">About Us</span></a></li>
-                <li class="visible_list"> <a href="#"><span class="title">Contact Us</span></a></li>
-            </ul>
-            <ul id="respMenu2" class="ace-responsive-menu widget_menu_home2 wa" data-menu-style="horizontal">
-                <li class="list-inline-item list_c me-0"><a href="#">Hot Deals</a></li>
-                <li class="list-inline-item list_c me-0"><a href="#">Top Categories</a></li>
-                <li class="list-inline-item list_c me-0"><a href="#">Best Sellers</a></li>
-                <li class="list-inline-item list_c me-0"><a href="#">New Arrivals</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <!-- Body Ovelay Behind Sidebar -->
 <div class="hiddenbar-body-ovelay"></div>
@@ -133,14 +99,6 @@
         <div class="log_reg_form sidebar_area">
             <div class="login_form">
                 <form id="signin-form" action="{{ route('api.login') }}" method="POST" x-data @submit.prevent="$submit()" @then="location.reload()">
-{{--                    <form action="{{ route('api.login') }}"--}}
-{{--                            x-data @submit.prevent="$submit()"--}}
-{{--                            @then="location.reload()"--}}
-{{--                            class="form w-100"--}}
-{{--                            x-transition:enter--}}
-{{--                            --}}{{--x-show="! forgot"--}}
-{{--                            method="post"--}}
-{{--                    >--}}
                     <div class="mb-2 mr-sm-2">
                         <label class="form-label">Email</label>
                         <input id="email" name="email" type="email" class=form-control placeholder="Enter email address..." required>
@@ -183,6 +141,197 @@
     </div>
 </div>
 <!--End Sign In Hiddn SideBar -->
+<livewire:cart-modal />
+
+<!-- Main Header Nav For Mobile -->
+<div id="page" class="stylehome1">
+    <div class="mobile-menu">
+        <div class="header stylehome1 home7_style">
+            <div class="menu_and_widgets">
+                <div class="mobile_menu_bar float-start"> <a class="menubar" href="#menu"><span></span></a> <a class="mobile_logo"                              href="{{ route('home') }}">Taracon<span class="text-thm">.</span></a>
+                </div>
+                <div class="mobile_menu_widget_icons">
+                    <ul class="cart mt15">
+                        {{--                            <li class="list-inline-item"> <a class="cart_btn signin-filter-btn" href="#"><span class="icon flaticon-profile"></span></a> </li>--}}
+                        {{--                            <li class="list-inline-item"> <a class="cart_btn cart-filter-btn" href="#"><span class="icon"><img src="images/icons/flaticon-shopping-cart.svg" alt=""></span><span class="badge bgc-thm">2</span></a> </li>--}}
+                        @auth()
+                            <li class=list-inline-item>
+                                <a class="cart_btn" href="{{ route('dashboard') }}">
+                                    <span class="icon flaticon-profile"></span>
+                                </a>
+                            </li>
+                        @else
+                            <li class=list-inline-item>
+                                <a class="cart_btn signin-filter-btn" href="#">
+                                    <span class="icon flaticon-profile"></span>
+                                </a>
+                            </li>
+                        @endauth
+                        <li class=list-inline-item>
+                            <a class="cart_btn cart-filter-btn" href="#">
+                                <span class=icon>
+                                    <img src="{{ asset('images/icons/flaticon-shopping-cart.svg') }}" alt="">
+                                </span>
+                                <span class="badge bgc-thm">
+                                    <livewire:cart-count />
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile_menu_search_widget">
+                <div class="header_middle_advnc_search">
+                    <div class="container search_form_wrapper">
+                        <div class="row">
+                            <div>
+                                <div class="top-search text-start">
+                                    <form action="#" method="get" class="form-search" accept-charset="utf-8">
+                                        <div class="box-search">
+                                            <input class="form_control" type="text" name="search" placeholder="Search products…">
+                                            <div class="search-suggestions text-start">
+                                                <div class="box-suggestions">
+                                                    <ul>
+                                                        @foreach(app('featured_products')->take('4') as $product)
+                                                            <a href="{{ route('shop.show', $product) }}">
+                                                                <li>
+                                                                    <div class="thumb">
+                                                                        <img src="{{ $product->images->first()?->thumbnail }}" alt="{{ $product->name }}">
+                                                                    </div>
+                                                                    <div class="info-product">
+                                                                        <div class="item_title">{{ $product->name }}</div>
+                                                                        <div class="price">
+                                                                             <span class="sale">
+                                                                                           ₦{{ number_format($product->price) }}
+                                                                                 </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </a>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                                <!-- /.box-suggestions -->
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="advscrh_frm_btn ">
+                                    <button type="submit" class="btn search-btn"><span class="flaticon-search"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="posr">
+                <div class="mobile_menu_close_btn"><span class="flaticon-close"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.mobile-menu view -->
+    <nav id="menu" class="stylehome3">
+        <ul>
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('shop.index') }}">Shop</a></li>
+            <li><a href="{{ route('home') }}">Our Stores</a></li>
+            <li><a href="{{ route('about-us') }}">About us</a></li>
+            <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
+
+            <li class="title my-3 bb1 pl20 fz20 fw500 pb-3">Top Categories</li>
+            @foreach(app('categories') as $category)
+                <li><span>{{ $category->name }}</span>
+                    <ul>
+                        @foreach($category->subCategories as $subCategory)
+                            <li><a href="{{ route('shop.index', ['sub-category'=> $subCategory]) }}">
+                                    {{ $subCategory->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endforeach
+                            <li><a class="tdu text-thm1 text-capitalize" href="#">See More <i class="far fa-angle-down"></i></a></li>
+            <!-- Only for Mobile View -->
+        </ul>
+    </nav>
+</div>
+
+<div class="body_content_wrapper position-relative">
+
+    <header class="header-nav menu_style_home_one main-menu light_blue">
+        <nav class=posr>
+            <div class="container posr menu_bdrt1">
+                <div class=menu-toggle>
+                    <button type=button id=menu-btn>
+                        <span class=icon-bar></span>
+                        <span class=icon-bar></span>
+                        <span class=icon-bar></span>
+                    </button>
+                </div>
+                <div class="posr logo1 home1_style">
+                    <div id=mega-menu>
+                        <a class=btn-mega href="#">
+                            <img class=me-2 src="{{ asset('images/desktop-nav-menu-white.svg') }}" alt="Desktop Menu Icon">
+                            <span class="fw500 fz16 color-white vam">Browse Categories</span>
+                        </a>
+                        <ul class=menu>
+                            @foreach(app('categories') as $category)
+                                <li>
+                                    <a class=dropdown href="{{ route('shop.index', ['category'=> $category]) }}">
+                                        <span class=menu-title>{{ $category->name }}</span>
+                                    </a>
+                                    <div class=drop-menu>
+                                        <div class=one-third>
+                                            <div class=cat-title>{{ $category->name }}</div>
+                                            <ul class=mb20>
+                                                @foreach($category->subCategories as $subCategory)
+                                                    <li>
+                                                        <a href="{{ route('shop.index', ['sub-category'=> $subCategory]) }}">
+                                                            {{ $subCategory->name }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <ul id=respMenu class="ace-responsive-menu menu_list_custom_code wa pl200" data-menu-style=horizontal>
+                    <li class=visible_list>
+                        <a href="{{ route('home') }}" class="y-menu"><span class=title>Home</span></a>
+                    </li>
+                    <li class=visible_list>
+                        <a href="{{ route('shop.index') }}" class="y-menu"><span class=title>Shop</span></a>
+                    </li>
+{{--                    <li class=visible_list> <a href="#"><span class=title>Brands</span></a>--}}
+{{--                        <ul>--}}
+{{--                            @foreach (app('brands') as $brand)--}}
+{{--                                <li><a href="{{ route('shop.index', ['brand' => $brand]) }}">{{ $brand->name }}</a></li>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+                    <li class=visible_list>
+                        <a href="{{ route('home') }}" class="y-menu"><span class=title>Our Stores</span></a>
+                    </li>
+                    <li class=visible_list>
+                        <a href="{{ route('about-us') }}" class="y-menu"><span class=title>About us</span></a>
+                    </li>
+                    <li class=visible_list>
+                        <a href="{{ route('contact-us') }}" class="y-menu"><span class=title>Contact Us</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+{{--    <!-- Home Design -->--}}
 
 @push('scripts')
     <script>

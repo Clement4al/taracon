@@ -33,7 +33,7 @@
                 @foreach($products as $product)
                     <a href="{{ route('products.edit', $product) }}" class="d-flex text-dark text-hover-primary align-items-center mb-5">
                         <div class="symbol symbol-40px me-4">
-                            <img class="w-40px h-40px" src="{{ $product->image->thumbnail }}" alt=""/>
+                            <img class="w-40px h-40px" src="{{ $product->images->first()?->medium }}" alt=""/>
                         </div>
                         <div class="d-flex flex-column justify-content-start fw-semibold">
                             <span class="fs-6 fw-semibold" data-bs-toggle="tooltip" title="{{ $product->name }}">{{ str($product->name)->limit(30) }}</span>

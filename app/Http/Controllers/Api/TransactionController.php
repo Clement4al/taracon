@@ -17,6 +17,7 @@ class TransactionController extends Controller
 
     public function store(StoreTransactionRequest $request, Order $order)
     {
+
         $transaction = $request->fulfill();
 
         return response()->api('Transaction initialized', compact('transaction'));

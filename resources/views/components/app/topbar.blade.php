@@ -35,8 +35,6 @@
 
             </div>
             <!--end::Menu wrapper-->
-
-
             <!--begin::Navbar-->
             <div class="app-navbar flex-shrink-0">
                 <!--begin::Search-->
@@ -140,8 +138,6 @@
                          data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                          data-kt-menu-placement="bottom-end">
                         <img src="{{ user()->photo }}" alt="user photo"/>
-{{--                        <img src="" alt="user photo"/>--}}
-
                     </div>
                     <!--begin::User account menu-->
                     <div

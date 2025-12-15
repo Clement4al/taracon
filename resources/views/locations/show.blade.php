@@ -63,7 +63,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <a href="{{ route('products.edit', $product) }}" class="symbol symbol-50px">
-                                                        <span class="symbol-label" style="background-image:url({{ $product->image?->thumbnail }});"></span>
+                                                        <span class="symbol-label" style="background-image:url({{ $product->images->first()?->thumbnail }});"></span>
                                                     </a>
                                                     <div class="ms-5">
                                                         <a href="{{ route('products.edit', $product) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">

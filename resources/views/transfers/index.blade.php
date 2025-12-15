@@ -66,7 +66,7 @@
                                                 <div class="symbol-group symbol-hover flex-nowrap">
                                                     @foreach ($transfer->products->take(4) as $product)
                                                         <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="{{ $product->slug }}">
-                                                            <img alt="product image" src="{{ $product->image?->thumbnail }}" />
+                                                            <img alt="product image" src="{{ $product->images->first()?->thumbnail }}" />
                                                         </div>
                                                     @endforeach
 

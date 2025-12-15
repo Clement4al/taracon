@@ -57,16 +57,6 @@ class AppServiceProvider extends ServiceProvider
         $this->registerApiResponseMacros();
         $this->registerCarbonMacro();
         $this->registerCacheableApplicationModels();
-
-//
-//        $this->routes(function () {
-//            Route::middleware('api')
-//                ->prefix('api')->name('api.')
-//                ->group(base_path('routes/api.php'));
-//
-//            Route::middleware('web')
-//                ->group(base_path('routes/web.php'));
-//        });
         Paginator::useBootstrapFive();
     }
 
@@ -88,7 +78,6 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-
     public function registerMigrationMacros()
     {
         Blueprint::macro('authors', function () {

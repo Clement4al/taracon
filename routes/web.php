@@ -19,6 +19,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\TransferController;
 use App\Http\Controllers\TransferWaybillController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserOrderController;
@@ -76,7 +77,7 @@ Route::middleware(['auth', 'can:access'])->group(function () {
 //    Route::resource('flyers',              FlyerController::class)->only('index', 'create');
     Route::resource('reports',              ReportController::class)->only('index');
     Route::resource('products',            ProductController::class)->only('index', 'create', 'edit');
-//    Route::resource('transfers',           TransferController::class)->only('index', 'show');
+    Route::resource('transfers',           TransferController::class)->only('index', 'show');
     Route::resource('locations',           LocationController::class)->only('index', 'show');
     Route::resource('categories',          CategoryController::class)->only('index', 'create', 'edit');
     Route::resource('users.orders',        UserOrderController::class)->only('index');

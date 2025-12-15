@@ -178,8 +178,7 @@
                     <!--begin:Transfers Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-{{--                        <a class="menu-link" href="{{ route('transfers.index') }}">--}}
-                            <a class=" menu-link" href="">
+                        <a class="menu-link" href="{{ route('transfers.index') }}">
 
                                 <span class="menu-icon">
                                     <i class="ki-duotone ki-arrow-right-left fs-2">

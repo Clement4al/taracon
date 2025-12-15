@@ -61,8 +61,6 @@ Route::name('api.')->group(function () {
 
         Route::resource('locations.transfers', TransferController::class)->only('store');
 
-//        Route::apiResource('images',ImageController::class)->only('store', 'destroy')->shallow();
-
         Route::apiResource('images', ProductImageController::class)->only('store', 'destroy')->shallow();
     });
 });

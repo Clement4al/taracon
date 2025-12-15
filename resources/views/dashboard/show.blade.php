@@ -12,7 +12,7 @@
                                 <div class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start h-250px" style="background-image:url({{ asset('admin/media/svg/shapes/top-green.png') }}" data-bs-theme="light">
                                     <h3 class="card-title align-items-start flex-column text-white pt-15">
                                         <span class="fw-bold fs-2x mb-3">
-                                            {{ Date::greet() }}, {{ user('first_name') }}! 👋
+                                            {{ Date::greet() }}, {{ user('first_name') }}! 👨‍🍳
                                         </span>
 
                                         <span class="fs-4 text-white">
@@ -111,11 +111,14 @@
                                 <div class="card-title">
                                     <h4>Recent Orders</h4>
                                 </div>
+                                
+                                @admin
                                 <div class="card-toolbar">
                                     <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary">
                                         View all <i class="bi bi-chevron-right p-0"></i>
                                     </a>
                                 </div>
+                                @endadmin
                             </div>
 
                             <div class="card-body pt-0">

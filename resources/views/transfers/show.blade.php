@@ -90,7 +90,7 @@
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
                                                                         <span class="symbol symbol-50px">
-                                                                            <span class="symbol-label" style="background-image:url({{ $product->image?->thumbnail }});">
+                                                                            <span class="symbol-label" style="background-image:url({{ $product->images->first()?->thumbnail }});">
                                                                             </span>
                                                                         </span>
                                                                         <div class="ms-5">

@@ -16,28 +16,26 @@ trait UserAttributes
             $this->first_name.' '.$this->last_name
         ));
     }
-
     public function photo(): Attribute
     {
         return Attribute::make(
             get: function ($value) {
-                // If no uploaded photo -> choose default avatar based on gender
-                $value ??= $this->gender->isMale()
-                    ? config("cloudinary.defaults.photos.male")
-                    : config("cloudinary.defaults.photos.female");
-                // Always return a properly transformed Cloudinary URL
-                return cloudinary_url($value, [ "height" => 220, "width" => 220, "crop" => "fill", "gravity" => "face",]);
+                // If no uploaded photo → generate avatar
+                if (! $value) {
+                    return "https://ui-avatars.com/api?background=eef6ff&color=0062D1&name=". urlencode($this->name). "&format=svg";
+                }
+                // Photo exists → return Cloudinary URL
+                return cloudinary_url($value, [ 'height'  => 220, 'width'   => 220, 'crop' => 'fill', 'gravity' => 'face', ]);
             },
-
             set: function ($value) {
-                // If no file was uploaded, keep existing value
-                if (!$value) {
-                    return null;
+                // No upload → keep existing DB value
+                if (! $value) {
+                    return $this->attributes['photo'] ?? null;
                 }
                 // Upload photo → return public_id only
-                return Cloudinary::uploadApi()->upload($value->getRealPath(), ['folder' => config('cloudinary.folders.user')])['public_id'];
+                return Cloudinary::uploadApi()->upload(
+                    $value->getRealPath(), ['folder' => config('cloudinary.folders.user')])['public_id'];
             }
         )->withoutObjectCaching();
     }
-
-}
+    }

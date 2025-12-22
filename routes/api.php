@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\TransactionController;
+use App\Http\Controllers\Api\TransactionsController;
 use App\Http\Controllers\Api\TransferController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\StockController;
@@ -51,6 +52,8 @@ Route::name('api.')->group(function () {
         Route::resource('transactions',    TransactionController::class)->only('destroy');
 
         Route::resource('orders.transactions', TransactionController::class)->only('store');
+
+        Route::resource('transactions', TransactionsController::class)->only('update');
         Route::resource('locations',  LocationController::class)->except('index', 'show');
         Route::singleton('bulk-products', BulkProductController::class)->only('update');
 
@@ -64,5 +67,6 @@ Route::name('api.')->group(function () {
         Route::apiResource('images', ProductImageController::class)->only('store', 'destroy')->shallow();
     });
 });
+
 
 

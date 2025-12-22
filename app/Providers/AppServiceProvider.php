@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Http;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -51,6 +52,10 @@ class AppServiceProvider extends ServiceProvider
         // Give the Laravel facade a unique alias to avoid conflict
         AliasLoader::getInstance()->alias('CloudinaryFacade', Cloudinary::class);
 
+        Http::macro('paystack', function () {
+            return Http::withToken(config('services.paystack.secret_key'))
+                ->baseUrl('https://api.paystack.co');
+        });
         Model::unguard();
         $this->registerCustomBladeDirectives();
         $this->registerMigrationMacros();

@@ -26,7 +26,8 @@ class RouteServiceProvider extends ServiceProvider
         // Register route groups
         $this->routes(function () {
             Route::middleware('api')
-                ->prefix('api')->name('api.')
+                ->prefix('api')
+                ->name('api.')
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')

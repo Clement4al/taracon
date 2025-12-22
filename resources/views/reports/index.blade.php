@@ -46,9 +46,7 @@
                                             </i>
                                         </span>
                                     </span>
-{{--                                    <div class="text-white fw-bold fs-2 my-2">{{ number_format($stock) }}</div>--}}
-                                    <div class="text-white fw-bold fs-2 my-2">100</div>
-
+                                    <div class="text-white fw-bold fs-2 my-2">{{ number_format($stock) }}</div>
                                     <div class="fw-semibold text-white">Current Stock Quantity</div>
                                 </div>
                             </div>

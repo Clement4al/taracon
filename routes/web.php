@@ -15,9 +15,11 @@ use App\Http\Controllers\ProductController;
 //use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SalesExportController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\StockExportController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\TransferWaybillController;
@@ -37,8 +39,8 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/oauth/{provider}/authorize', [OAuthController::class, 'create'])->name('oauth.create');
-Route::get('/oauth/{provider}/redirect',  [OAuthController::class, 'store'])->name('oauth.store');
+//Route::get('/oauth/{provider}/authorize', [OAuthController::class, 'create'])->name('oauth.create');
+//Route::get('/oauth/{provider}/redirect',  [OAuthController::class, 'store'])->name('oauth.store');
 
 Route::get('/contact-us', function () {
     return view('contact-us');
@@ -64,8 +66,8 @@ Route::view('/stores',      'stores')->name('stores');
 
 Route::middleware(['auth', 'can:access'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
-//    Route::get('/stock-export', StockExportController::class)->name('stock-export');
-//    Route::get('/sales-export', SalesExportController::class)->name('sales-export');
+    Route::get('/stock-export', StockExportController::class)->name('stock-export');
+    Route::get('/sales-export', SalesExportController::class)->name('sales-export');
 
     Route::get('/email/verify/{id}/{hash}', VerifyEmailController::class)->name('verification.verify');
 

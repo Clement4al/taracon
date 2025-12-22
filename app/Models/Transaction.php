@@ -13,7 +13,12 @@ use Illuminate\Support\Traits\Tappable;
 class  Transaction extends Model
 {
     use HasAuthor, TransactionScope, Tappable, Observable;
-
+    protected $fillable = [
+        'reference',
+        'amount',
+        'status',
+        'paid_at',
+    ];
     protected $casts = [
         'paid_at' => 'datetime'
     ];

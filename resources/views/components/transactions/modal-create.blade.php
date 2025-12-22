@@ -94,30 +94,70 @@
         </div>
     </div>
 </div>
-
-@push('scripts')
+{{--@push('scripts')--}}
     <script src="https://js.paystack.co/v2/inline.js"></script>
+
     <script>
         function initializePaystack({ detail: { data } }) {
             if (data.transaction.channel !== 'paystack') {
                 return location.reload();
             }
-
             (new PaystackPop).newTransaction({
                 email: @js($order->user->email),
                 amount: data.transaction.amount * 100,
                 reference: data.transaction.reference,
                 key: @js(config('services.paystack.public_key')),
-                onSuccess: () => {
-                    swal({
-                        title: "Thank you!",
-                        text: "Your payment was successful.",
-                        icon: "success",
-                        closeOnClickOutside: false,
-                        closeOnEsc: false
-                    }).then(() => location.reload());
+                // BACKEND CALLBACK
+                {{--callback_url: @js(route('transactions.update')),--}}
+                onSuccess: (transaction) => {
+                    const baseUrl = @js(url('/api/transactions/'));
+                    axios.put(`${baseUrl}/${data.transaction.id}`).then(response => {
+                        swal({
+                            title: "Thank you!",
+                            text: "Your payment was successful.",
+                            icon: "success",
+                            closeOnClickOutside: false,
+                            closeOnEsc: false
+                        }).then(() => location.reload());
+                    }).catch(error => {
+                        console.error('Error updating transaction:', error);
+                        swal({
+                            title: "Oops!",
+                            text: "We couldn't update your transaction. Please try again.",
+                            icon: "error"
+                        });
+                    });
                 }
             });
         }
     </script>
-@endpush
+
+
+{{--@endpush--}}
+
+{{--@push('scripts')--}}
+{{--    <script src="https://js.paystack.co/v2/inline.js"></script>--}}
+{{--    <script>--}}
+{{--        function initializePaystack({ detail: { data } }) {--}}
+{{--            if (data.transaction.channel !== 'paystack') {--}}
+{{--                return location.reload();--}}
+{{--            }--}}
+
+{{--            (new PaystackPop).newTransaction({--}}
+{{--                email: @js($order->user->email),--}}
+{{--                amount: data.transaction.amount * 100,--}}
+{{--                reference: data.transaction.reference,--}}
+{{--                key: @js(config('services.paystack.public_key')),--}}
+{{--                onSuccess: () => {--}}
+{{--                    swal({--}}
+{{--                        title: "Thank you!",--}}
+{{--                        text: "Your payment was successful.",--}}
+{{--                        icon: "success",--}}
+{{--                        closeOnClickOutside: false,--}}
+{{--                        closeOnEsc: false--}}
+{{--                    }).then(() => location.reload());--}}
+{{--                }--}}
+{{--            });--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--@endpush--}}

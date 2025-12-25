@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-//use App\Models\Concerns\HasAuthor;
+use App\Models\Concerns\HasAuthor;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-//    use HasAuthor;
+    use HasAuthor;
 
     /**
      * The attributes that should be cast.

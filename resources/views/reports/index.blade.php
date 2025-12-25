@@ -61,9 +61,7 @@
                                             </i>
                                         </span>
                                     </span>
-{{--                                    <div class="fw-bold fs-2 my-2">₦{{ number_format($stockValue) }}</div>--}}
-                                    <div class="text-white fw-bold fs-2 my-2">100</div>
-
+                                    <div class="fw-bold fs-2 my-2">₦{{ number_format($stockValue) }}</div>
                                     <div class="fw-semibold">Current Stock Value</div>
                                 </div>
                             </div>
@@ -79,7 +77,7 @@
                                             </i>
                                         </span>
                                     </span>
-{{--                                    <div class="fw-bold fs-2 my-2">₦98,200,200</div>--}}
+                                    <div class="fw-bold fs-2 my-2">₦{{ number_format($stockProfit) }}</div>
                                     <div class="fw-semibold">Current Stock Profit Value</div>
                                 </div>
                             </div>
@@ -94,14 +92,10 @@
                                         <i class="ki-duotone ki-arrow-up fs-2 text-danger ms-n1">
                                             <span class="path1"></span><span class="path2"></span>
                                         </i>
-{{--                                        ₦{{ number_format($todaySales) }}--}}
-                                        ₦ 6,500
-
+                                        ₦{{ number_format($todaySales) }}
                                     </div>
                                     <div class="fw-semibold text-gray-400">
-{{--                                        Profit value: ₦{{ number_format($todayProfit) }}--}}
-                                        Profit value: ₦56,000,000
-
+                                        Profit value: ₦{{ number_format($todayProfit) }}
                                     </div>
                                 </div>
                             </div>
@@ -114,12 +108,9 @@
                                         <i class="ki-duotone ki-arrow-up fs-2 text-warning ms-n1">
                                             <span class="path1"></span><span class="path2"></span>
                                         </i>
-{{--                                        ₦{{ number_format($weekSales) }}--}}
-                                        ₦45,000
+                                        ₦{{ number_format($weekSales) }}
                                     </div>
-{{--                                    <div class="fw-semibold text-gray-400">Profit value: ₦{{ number_format($weekProfit) }}</div>--}}
-                                    <div class="fw-semibold text-gray-400">Profit value: ₦56,000,449</div>
-
+                                    <div class="fw-semibold text-gray-400">Profit value: ₦{{ number_format($weekProfit) }}</div>
                                 </div>
                             </div>
                         </div>
@@ -131,12 +122,9 @@
                                         <i class="ki-duotone ki-arrow-up fs-2 text-primary ms-n1">
                                             <span class="path1"></span><span class="path2"></span>
                                         </i>
-{{--                                        ₦{{ number_format($monthSales) }}--}}
-                                        ₦4,482,323
+                                        ₦{{ number_format($monthSales) }}
                                     </div>
-{{--                                    <div class="fw-semibold text-gray-400">Profit value: ₦{{ number_format($monthProfit) }}</div>--}}
-                                      <div class="fw-semibold text-gray-400">Profit value: ₦4,400,389</div>
-
+                                    <div class="fw-semibold text-gray-400">Profit value: ₦{{ number_format($monthProfit) }}</div>
                                 </div>
                             </div>
                         </div>
@@ -148,13 +136,10 @@
                                         <i class="ki-duotone ki-arrow-up fs-2 text-success ms-n1">
                                             <span class="path1"></span><span class="path2"></span>
                                         </i>
-{{--                                        ₦{{ number_format($yearSales) }}--}}
-                                        ₦5,900,999
+                                        ₦{{ number_format($yearSales) }}
                                     </div>
                                     <div class="fw-semibold text-gray-400">
-{{--                                        Profit value: ₦{{ number_format($yearProfit) }}--}}
-                                         Profit value: ₦56,355,000
-
+                                        Profit value: ₦{{ number_format($yearProfit) }}
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +166,7 @@
                                 </div>
                                 <div class="card-body d-flex justify-content-between flex-column pb-1 px-0">
                                     <div id="revenue-chart" class="min-h-auto ps-4 pe-6" style="height: 500px"
-{{--                                         data-values="{{ $incomeStatistics->values() }}" data-keys="{{ $incomeStatistics->keys() }}"--}}
+                                         data-values="{{ $incomeStatistics->values() }}" data-keys="{{ $incomeStatistics->keys() }}"
                                     ></div>
                                 </div>
                             </div>
@@ -204,21 +189,21 @@
                     </div>
                 </div>
                 <div class="modal-body">
-{{--                    <form action="{{ route('stock-export') }}">--}}
-{{--                        <label class="required form-label" for="location">Location</label>--}}
-{{--                        <select class="form-select mb-5" name="location_id[]" data-control="select2" data-placeholder="All Locations" multiple id="location">--}}
-{{--                            @foreach($locations as $location)--}}
-{{--                                <option value="{{ $location->id }}">{{ $location->name }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        <div class="text-muted fs-7 mb-7">Stock report will be downloaded in CSV Excel format.</div>--}}
-{{--                        <div class="modal-footer">--}}
-{{--                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--}}
-{{--                            <button type="submit" class="btn btn-primary">--}}
-{{--                                <i class="ki-duotone ki-exit-down fs-2"><i class="path1"></i><i class="path2"></i></i>Download--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
+                    <form action="{{ route('stock-export') }}">
+                        <label class="required form-label" for="location">Location</label>
+                        <select class="form-select mb-5" name="location_id[]" data-control="select2" data-placeholder="All Locations" multiple id="location">
+                            @foreach($locations as $location)
+                                <option value="{{ $location->id }}">{{ $location->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="text-muted fs-7 mb-7">Stock report will be downloaded in CSV Excel format.</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="ki-duotone ki-exit-down fs-2"><i class="path1"></i><i class="path2"></i></i>Download
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -233,17 +218,17 @@
                         <i class="ki-duotone ki-abstract-11 fs-2"><i class="path1"></i><i class="path2"></i></i>
                     </div>
                 </div>
-{{--                <div class="modal-body">--}}
-{{--                    <form action="{{ route('sales-export') }}">--}}
-{{--                        <div class="text-muted fs-7 mb-4">Sales report will be downloaded in CSV Excel format.</div>--}}
-{{--                        <div>--}}
-{{--                            <label class="required form-label" for="user">Sales By</label>--}}
-{{--                            <select class="form-select mb-7" name="user_id[]" data-control="select2" multiple data-placeholder="All" data-hide-search="true" id="user">--}}
-{{--                                @foreach($administrators as $administrator)--}}
-{{--                                    <option value="{{ $administrator->id }}">{{ $administrator->name }}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
+                <div class="modal-body">
+                    <form action="{{ route('sales-export') }}">
+                        <div class="text-muted fs-7 mb-4">Sales report will be downloaded in CSV Excel format.</div>
+                        <div>
+                            <label class="required form-label" for="user">Sales By</label>
+                            <select class="form-select mb-7" name="user_id[]" data-control="select2" multiple data-placeholder="All" data-hide-search="true" id="user">
+                                @foreach($administrators as $administrator)
+                                    <option value="{{ $administrator->id }}">{{ $administrator->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="fv-row mb-7">
                             <label class="fs-5 fw-semibold form-label mb-5">Select Date Range:</label>
                             <div class="form-control frm-control-solid" id="date" readonly></div>

@@ -15,7 +15,7 @@
                         <div class="icon"><span class="flaticon-email"></span></div>
                         <div class="details ms-4">
                             <h5 class="title">Need help with your order?</h5>
-                            <a href="#">support@taraconservices.com</a> </div>
+                            <a target="_blank" href="mailto:{{ site('email') }}">{{ site('email') }}</a></div>
                     </div>
                 </div>
             </div>
@@ -85,8 +85,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="copyright-widget text-center text-lg-start d-block d-lg-flex mb15-md">
-                    <p class="me-4">© 2025 . All Rights Reserved</p>
-                    <p><a href="#">Privacy</a> · <a href="#">Terms</a></p>
+                    <p class="me-4"> ©
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                    <a href="{{ route('home') }}">{{ site('title') }} </a>. All Rights Reserved.</p>
                 </div>
             </div>
 

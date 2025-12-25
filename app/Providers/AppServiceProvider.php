@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\User;
 use App\Support\Cart;
 use Illuminate\Foundation\AliasLoader;
@@ -15,6 +16,7 @@ use Illuminate\Routing\ResponseFactory;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Http;
@@ -62,6 +64,8 @@ class AppServiceProvider extends ServiceProvider
         $this->registerApiResponseMacros();
         $this->registerCarbonMacro();
         $this->registerCacheableApplicationModels();
+        $this->registerSiteSetting();
+
         Paginator::useBootstrapFive();
     }
 
@@ -89,6 +93,13 @@ class AppServiceProvider extends ServiceProvider
             /** @var Blueprint $this */
             $this->foreignId('created_by')->nullable()->constrained('users');
             $this->foreignId('updated_by')->nullable()->constrained('users');
+        });
+    }
+
+    public function registerSiteSetting()
+    {
+        $this->app->singleton(Setting::class, function () {
+            return Cache::rememberForever('setting', fn () => Setting::firstOrFail());
         });
     }
 

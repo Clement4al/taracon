@@ -310,13 +310,6 @@
                     <li class=visible_list>
                         <a href="{{ route('shop.index') }}" class="y-menu"><span class=title>Shop</span></a>
                     </li>
-{{--                    <li class=visible_list> <a href="#"><span class=title>Brands</span></a>--}}
-{{--                        <ul>--}}
-{{--                            @foreach (app('brands') as $brand)--}}
-{{--                                <li><a href="{{ route('shop.index', ['brand' => $brand]) }}">{{ $brand->name }}</a></li>--}}
-{{--                            @endforeach--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
                     <li class=visible_list>
                         <a href="{{ route('home') }}" class="y-menu"><span class=title>Our Stores</span></a>
                     </li>

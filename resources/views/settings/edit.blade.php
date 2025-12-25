@@ -57,13 +57,13 @@
                                                 <label for="header-title" class="fw-semibold fs-6 form-label">Title</label>
                                             </div>
                                             <div class="col-lg-8 mb-7">
-{{--                                                <textarea id="header-title" class="form-control" name="about[title]" rows="1" required>{{ site('about')->title }}</textarea>--}}
+                                                <textarea id="header-title" class="form-control" name="about[title]" rows="1" required>{{ site('about')->title }}</textarea>
                                             </div>
                                             <div class="col-lg-4 mb-0">
                                                 <label for="header-body" class="fw-semibold fs-6 form-label">Body</label>
                                             </div>
                                             <div class="col-lg-8 mb-7">
-{{--                                                <textarea id="header-body" class="form-control" name="about[text1]" required>{{ site('about')->text1 }}</textarea>--}}
+                                                <textarea id="header-body" class="form-control" name="about[text1]" required>{{ site('about')->text1 }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -72,18 +72,18 @@
                                     </div>
                                     <div class="card-body border-top p-9">
                                         <div class="row mb-2">
-{{--                                            @foreach(site('about')->body as $key => $body)--}}
-{{--                                                <div class="col-md-6 mb-7">--}}
-{{--                                                    <div class="mb-7">--}}
-{{--                                                        <label for="header-title" class="fw-semibold fs-6 form-label">Title</label>--}}
-{{--                                                        <textarea id="header-title" class="form-control" name="about[body][{{ $key }}][title]" rows="1" required>{{ $body->title }}</textarea>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="mb-5">--}}
-{{--                                                        <label for="header-body" class="fw-semibold fs-6 form-label">Body</label>--}}
-{{--                                                        <textarea id="header-body" class="form-control" name="about[body][{{ $key }}][body]" rows="10" required>{{ $body->body }}</textarea>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            @endforeach--}}
+                                            @foreach(site('about')->body as $key => $body)
+                                                <div class="col-md-6 mb-7">
+                                                    <div class="mb-7">
+                                                        <label for="header-title" class="fw-semibold fs-6 form-label">Title</label>
+                                                        <textarea id="header-title" class="form-control" name="about[body][{{ $key }}][title]" rows="1" required>{{ $body->title }}</textarea>
+                                                    </div>
+                                                    <div class="mb-5">
+                                                        <label for="header-body" class="fw-semibold fs-6 form-label">Body</label>
+                                                        <textarea id="header-body" class="form-control" name="about[body][{{ $key }}][body]" rows="10" required>{{ $body->body }}</textarea>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex justify-content-end py-6 px-9">
@@ -149,19 +149,24 @@
                                         <div class="row mb-2">
                                             <div class="col-md-6 mb-7">
                                                 <label for="facebook" class="fw-semibold fs-6 form-label">Facebook</label>
-{{--                                                <input id="facebook" class="form-control" name="social_links[facebook]" value="{{ site('social_links')->facebook }}" placeholder="e.g. https://facebook.com/example">--}}
+                                                <input id="facebook" class="form-control" name="social_links[facebook]" value="{{ site('social_links')->facebook }}" placeholder="e.g. https://facebook.com/example">
                                             </div>
                                             <div class="col-md-6 mb-7">
                                                 <label for="instagram" class="fw-semibold fs-6 form-label">Instagram</label>
-{{--                                                <input id="instagram" class="form-control" name="social_links[instagram]" value="{{ site('social_links')->instagram }}" placeholder="e.g. https://instagram.com/example">--}}
+                                                <input id="instagram" class="form-control"
+                                                       name="social_links[instagram]"
+                                                       value="{{ site('social_links')->instagram }}"
+                                                       placeholder="e.g. https://instagram.com/example">
                                             </div>
                                             <div class="col-md-6 mb-7">
                                                 <label for="twitter" class="fw-semibold fs-6 form-label">Twitter</label>
-{{--                                                <input id="twitter" class="form-control" name="social_links[twitter]" value="{{ site('social_links')->twitter }}" placeholder="e.g. https://twitter.com/example">--}}
+                                                <><input id="twitter" class="form-control" name="social_links[twitter]"
+                                                          value="{{ site('social_links')->twitter }}"
+                                                          placeholder="e.g. https://twitter.com/example"></>
                                             </div>
                                             <div class="col-md-6 mb-7">
                                                 <label for="linkedin" class="fw-semibold fs-6 form-label">Linkedin</label>
-{{--                                                <input id="linkedin" class="form-control" name="social_links[linkedin]" value="{{ site('social_links')->linkedin }}" placeholder="e.g. https://linkedin.com/example">--}}
+                                                <input id="linkedin" class="form-control" name="social_links[linkedin]" value="{{ site('social_links')->linkedin }}" placeholder="e.g. https://linkedin.com/example">
                                             </div>
                                         </div>
                                     </div>

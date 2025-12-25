@@ -1,68 +1,63 @@
-<x-layout>
-    <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-5">
-        <h1 class="text-center text-white display-6">Contact</h1>
-        <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active text-white">Contact</li>
-        </ol>
-    </div>
-    <!-- Single Page Header End -->
-
-    <!-- Contact Start -->
-    <div class="container-fluid contact py-5">
-        <div class="container py-5">
-            <div class="p-5 bg-light rounded">
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="text-center mx-auto" style="max-width: 700px;">
-                            <h1 class="text-primary">Get in touch</h1>
-                            2<p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                        </div>
+<x-site>
+    <x-site.breadcrumbs title="Contact Us"/>
+    <!-- Our Contact -->
+    <section class="our-contact pt0 pb0">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 m-auto pt0">
+                    <div class="main-title">
+                        <h2>Contact us</h2>
+                        <p>
+                            Do you want to make enquiries of any sort? Have complaints about your order or anything at all we could help you with?<br>There are several channels through which you can reach out us immediately.
+                        </p>
+                        <p>
+                            You may simply initiate a live chat conversation with any of our available agents by clicking on the live chat icon at the bottom-right corner of this page,<br>or simple give us a call through any of our phone numbers as indicated at the bottom of this page.
+                        </p>
+                        <p>
+                            You may also reach us via WhatsApp by clicking on the WhatsApp Icon at the bottom-left corner of this page.
+                        </p>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="h-100 rounded">
-                            <iframe class="rounded w-100"
-                                    style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd"
-                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                    <div class="main-title">
+                        <h4>Our Address:</h4>
+                        <p>{{ site('address') }}</p>
                     </div>
-                    <div class="col-lg-7">
-                        <form action="" class="">
-                            <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Your Name">
-                            <input type="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="Enter Your Email">
-                            <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" placeholder="Your Message"></textarea>
-                            <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
-                        </form>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="d-flex p-4 rounded mb-4 bg-white">
-                            <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
-                            <div>
-                                <h4>Address</h4>
-                                <p class="mb-2">174 moshood,ayorinde street. victoria Island, Lagos, Nigeria.</p>
+                    <div class="contact_icon_box mt30">
+                        <div class="contact_iconbox d-flex mb30">
+                            <div class="icon"><span class="flaticon-phone-call"></span></div>
+                            <div class="details ms-4">
+                                <h4 class="title">Monday - Saturday: 08am-06pm</h4>
+                                <a href="#">{{ site('phone') }}</a>
                             </div>
                         </div>
-                        <div class="d-flex p-4 rounded mb-4 bg-white">
-                            <i class="fas fa-envelope fa-2x text-primary me-4"></i>
-                            <div>
-                                <h4>Mail Us</h4>
-                                <p class="mb-2">support@taracon.com</p>
+                        <div class="contact_iconbox d-flex">
+                            <div class="icon"><span class="flaticon-email"></span></div>
+                            <div class="details ms-4">
+                                <h4 class="title">Need help?</h4>
+                                <a href="mailto:{{ site('email') }}">{{ site('email') }}</a>
                             </div>
                         </div>
-                        <div class="d-flex p-4 rounded bg-white">
-                            <i class="fa fa-phone-alt fa-2x text-primary me-4"></i>
-                            <div>
-                                <h4>Telephone</h4>
-                                <p class="mb-2">(+234) 3456 7890</p>
-                            </div>
+                    </div>
+                    <div class="footer_social_widget mt30 mb30-md">
+                        <h4 class="title mb0">Follow us</h4>
+                        <div class="social_icon_list mt10">
+                            <ul class="mb20">
+                                <li class="list-inline-item">
+                                    <a href="{{ site('social_links')->facebook }}"><i class="fab fa-facebook"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{{ site('social_links')->twitter }}"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{{ site('social_links')->instagram }}"><i class="fab fa-instagram"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{{ site('social_links')->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Contact End -->
-
-</x-layout>
+    </section>
+</x-site>

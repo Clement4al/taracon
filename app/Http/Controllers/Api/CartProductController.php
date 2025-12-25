@@ -11,7 +11,6 @@ class CartProductController extends Controller
 {
     public function store(Product $product)
     {
-
         $product->addToCart();
 
         return response()->api("{$product->name} has been added to your cart.");

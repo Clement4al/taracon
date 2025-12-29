@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&amp;family=Poppins:wght@700&amp;display=swap" rel="stylesheet">
     <!-- Responsive stylesheet -->
     <link rel=stylesheet href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     @livewireStyles
 <style>

@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
@@ -39,8 +40,8 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-//Route::get('/oauth/{provider}/authorize', [OAuthController::class, 'create'])->name('oauth.create');
-//Route::get('/oauth/{provider}/redirect',  [OAuthController::class, 'store'])->name('oauth.store');
+Route::get('/oauth/{provider}/authorize', [OAuthController::class, 'create'])->name('oauth.create');
+Route::get('/oauth/{provider}/redirect',  [OAuthController::class, 'store'])->name('oauth.store');
 
 Route::get('/contact-us', function () {
     return view('contact-us');

@@ -5,7 +5,7 @@
     <meta charset=utf-8>
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta name="author" content="Clement Okon - 08075002725">
+    <meta name="author" content="Clement - 08075002725">
     <title>{{ config('app.name') }}</title>
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/img/logo/favicon.png') }}">
@@ -80,8 +80,11 @@
                         class="app-container  container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3 ">
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted fw-semibold me-1">{{ date('Y') }} &copy;</span>
-                            <a href="{{ config('app.url') }}" target="_blank" class="text-gray-800 text-hover-primary">Taracon</a>
+                            <p class="me-4"> ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                <a href="{{ route('home') }}">{{ site('title') }} </a>. All Rights Reserved.</p>                            <a href="{{ config('app.url') }}" target="_blank" class="text-gray-800 text-hover-primary">Taracon</a>
                         </div>
                         <!--end::Copyright-->
                         <!--begin::Menu-->

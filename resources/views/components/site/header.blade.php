@@ -218,7 +218,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="advscrh_frm_btn ">
+                                <div class="advscrh_frm_btn home7_style">
                                     <button type="submit" class="btn search-btn"><span class="flaticon-search"></span></button>
                                 </div>
                             </div>
@@ -304,21 +304,11 @@
                     </div>
                 </div>
                 <ul id=respMenu class="ace-responsive-menu menu_list_custom_code wa pl200" data-menu-style=horizontal>
-                    <li class=visible_list>
-                        <a href="{{ route('home') }}" class="y-menu"><span class=title>Home</span></a>
-                    </li>
-                    <li class=visible_list>
-                        <a href="{{ route('shop.index') }}" class="y-menu"><span class=title>Shop</span></a>
-                    </li>
-                    <li class=visible_list>
-                        <a href="{{ route('home') }}" class="y-menu"><span class=title>Our Stores</span></a>
-                    </li>
-                    <li class=visible_list>
-                        <a href="{{ route('about-us') }}" class="y-menu"><span class=title>About us</span></a>
-                    </li>
-                    <li class=visible_list>
-                        <a href="{{ route('contact-us') }}" class="y-menu"><span class=title>Contact Us</span></a>
-                    </li>
+                    <x-nav-link href="{{ route('home') }}" route="home">Home</x-nav-link>
+                    <x-nav-link href="{{ route('shop.index') }}" route="shop.*">Shop</x-nav-link>
+                    <x-nav-link href="{{ route('stores') }}" route="stores">Our Stores</x-nav-link>
+                    <x-nav-link href="{{ route('about-us') }}" route="about-us">About Us</x-nav-link>
+                    <x-nav-link href="{{ route('contact-us') }}" route="contact-us">Contact Us</x-nav-link>
                 </ul>
             </div>
         </nav>

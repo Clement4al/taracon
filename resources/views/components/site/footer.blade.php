@@ -3,13 +3,16 @@
     <div class="container pb60">
         <div class="row">
             <div class="col-sm-6 col-md-5 col-lg-3 col-xl-3">
-                <div class="footer_contact_widget">
-                    <h4>Contact Us</h4>
+                <div class=footer_contact_widget>
+{{--                    <a href="#"><img class="mb-4" style="height: 34px; width: 162px" src="{{ site('logo') }}" alt="logo"></a>--}}
+                    <h4>Address: <span class="h6">{{ site('address') }}</span></h4>
                     <div class="footer_contact_iconbox d-flex mb-4">
-                        <div class="icon"><span class="flaticon-phone-call"></span></div>
+                        <div class=icon><span class=flaticon-phone-call></span></div>
                         <div class="details ms-4">
-                            <h5 class="title">Monday-Friday: 08am-9pm</h5>
-                            <a href="#">+234 701 435 9042</a> </div>
+                            <h5 class=title>Mobile</h5>
+                            <a href="#">{{ substr(site('phone'), 0, 31) }}</a>
+                            <p><a href="#">{{ substr(site('phone'), -14) }}</a></p>
+                        </div>
                     </div>
                     <div class="footer_contact_iconbox d-flex">
                         <div class="icon"><span class="flaticon-email"></span></div>
@@ -35,10 +38,10 @@
                 <div class="footer_qlink_widget">
                     <h4>Customer Support</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">My Cart</a></li>
+                        <li><a href="{{ route('dashboard') }}">My Account</a></li>
                         <li><a href="#">My Items</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a class="cart-filter-btn" href="#">My Cart</a></li>
+                        <li><a href="{{ route('shop.index') }}">Shop</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,10 +49,10 @@
                 <div class="footer_qlink_widget">
                     <h4>Our Services</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
                         <li><a href="#">Refund</a></li>
                         <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="{{ route('about-us') }}">About us</a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
                     </ul>
                 </div>
             </div>

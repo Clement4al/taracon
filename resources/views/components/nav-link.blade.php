@@ -1,7 +1,5 @@
-@props(['active' => false, 'type'=> 'a'])
-
-<a class="{{ $active ? 'active' : ''}} rounded-md px-3 py-2 text-sm font-medium"
-   aria-current="{{ $active ? 'page': 'false' }}"
-    {{ $attributes }}
->{{ $slot }}</a>
-
+<li class="visible_list {{ request()->routeIs($route) ? 'menu-active' : '' }}">
+    <a href="{{ $href }}" class="nav-link {{ request()->routeIs($route) ? 'active' : '' }}">
+        <span class="title">{{ $slot }}</span>
+    </a>
+</li>

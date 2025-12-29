@@ -1,0 +1,7 @@
+/* Active menu color override */
+.ace-responsive-menu > li > a.active,
+.ace-responsive-menu > li > a.active span,
+.ace-responsive-menu li.menu-active > a,
+.ace-responsive-menu li.menu-active > a span {
+    color: #d8bb10 !important;
+}

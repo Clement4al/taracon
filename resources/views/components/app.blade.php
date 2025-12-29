@@ -5,7 +5,7 @@
     <meta charset=utf-8>
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta name="author" content="Clement Okon - 08075002725">
+    <meta name="author" content="Clement - 08075002725">
     <title>{{ config('app.name') }}</title>
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/img/logo/favicon.png') }}">

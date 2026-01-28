@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
-use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\Auth\NewPasswordController;
+use App\Http\Controllers\Api\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Api\BulkProductController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CartProductController;
@@ -36,6 +37,9 @@ Route::name('api.')->group(function () {
     Route::post('/login',    [AuthController::class, 'store'])->name('login');
     Route::delete('/logout', [AuthController::class, 'destroy'])->name('logout');
     Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
+
+    Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.forgot');
+    Route::post('/reset-password',  [NewPasswordController::class, 'store'])->name('password.reset');
 
     Route::singleton('cart',  CartController::class)->destroyable()->only('destroy');
     Route::resource('orders', OrderController::class)->only('store');
